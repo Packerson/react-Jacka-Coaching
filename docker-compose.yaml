@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  range_viewer_react:
+    build: 
+      context: .
+      dockerfile: ./docker/local/Dockerfile
+    restart: on-failure
+    volumes:
+      - .:/app
+      - ./app:/react_app
+      - /react_app/node_modules
+    ports:
+      - 3000:3000
+    image: react_app:react
+    container_name: react_container
+    command: npm start
