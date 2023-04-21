@@ -1,13 +1,43 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Footer and Header css */
+.NCBox {
+  background-color: #000;
+  align-items: center;
+  justify-content: right;
+  display: flex;
+  flex-direction: row;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.NCLogo {
+  margin-right: auto;
+  margin-top: 10px;
+}
+
+.NCLogoNavigation {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.NCNavigation {
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  margin-left: auto;
+}
+
+.NCNavItem {
+  width: auto;
+  margin-left: 7px;
+  margin-right: 7px;
+  font-size: 1.125rem;
+}
+
+.FooterBox {
+  background-color: #000;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
 }
