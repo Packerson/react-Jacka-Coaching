@@ -7,9 +7,7 @@ services:
       dockerfile: ./docker/local/Dockerfile
     restart: on-failure
     volumes:
-      - .:/app
-      - ./app:/react_app
-      - /react_app/node_modules
+      - /react_app
     ports:
       - 3000:3000
     image: react_app:react
