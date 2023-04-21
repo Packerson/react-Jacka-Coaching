@@ -41,3 +41,65 @@
   width: 100%;
   height: 100px;
 }
+
+/* Background */
+.LandingPage {
+  background-color: #011326;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.LPButtons {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  align-self: center;
+}
+
+.LPButton {
+  width: 250px;
+  margin: 3px;
+}
+
+/* LOGIN PAGE */
+.mg-top {
+	margin-top: 80px;
+}
+div.text-center {
+	box-sizing: border-box;
+	color: #212529;
+	font-family: Nunito, -apple-system, "system-ui", "Segoe UI", Roboto,
+		"Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	letter-spacing: 1px;
+	line-height: 24px;
+	text-align: center;
+}
+.hr-text {
+	background: linear-gradient(to right, transparent, #000000, transparent);
+	line-height: 24px;
+}
+
+.spinner-container {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 5000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.spinner {
+	width: 100px;
+	height: 100px;
+	border: 10px solid;
+	border-color: #000 transparent #555 transparent;
+	border-radius: 50%;
+	animation: spin 1.2s linear infinite;
+}
