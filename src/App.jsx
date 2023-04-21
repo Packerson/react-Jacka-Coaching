@@ -5,6 +5,7 @@ import Header from './components/Header'
 import HeaderNew from './components/HeaderNew'
 import MainPage from './pages/MainPage'
 import Footer from './components/Footer';
+import LoginPage from "./pages/LoginPage"
 
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
       <Header/>
       <Routes>
         <Route path="/" element={<MainPage/>} />
+        <Route path="login/" element={<LoginPage/>} />
       </Routes>
       <Footer/>
     </Router>
