@@ -14,10 +14,14 @@ const login = async (userData) => {
 		},
 	};
 	const response = await axios.post(CHECK_EMAIL_URL, userData, config);
-	if (response.data) {
+	if (!response.data.INFO) {
+		
 		localStorage.setItem("user", JSON.stringify(response.data));
+		return response.data;
+	}else {
+		console.log(response.data.INFO)
+		return response.data
 	}
-	return response.data;
 };
 
 

@@ -106,11 +106,13 @@ div.text-center {
 
 /* Main page */
 .ver1AppBox {
-  width: 600px;
-  height: auto;
+  width: auto;
+  height: max-content;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: #0b1d4d;
+
 }
 
 .ver1AppBox {
@@ -121,8 +123,8 @@ div.text-center {
   background-color: rgb(252, 252, 252);
 }
 
-.btnActib {
-  background-color: lightblue;
+.btnActiv {
+  background-color: rgb(75, 196, 237);
 }
 
 .RangeViewerComponentPreflopAction {

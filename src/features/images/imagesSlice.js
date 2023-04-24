@@ -1,10 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import imageService from './imagesService';
 
-const image_url = localStorage.getItem("image_url")
 
 const initialState = {
-    images: "",
+    images: {},
     isError: false,
     isLoading: false,
     isSuccess:false,
@@ -15,9 +14,9 @@ const initialState = {
 export const getImage = createAsyncThunk(
     'images/getAll',
 
-    async(_, thunkAPI) =>{
+    async(dataFromBtn, thunkAPI) =>{
         try{
-            return await imageService.getImage();
+            return await imageService.getImage(dataFromBtn);
 
         }catch (error){
         const message =
@@ -43,10 +42,9 @@ export const imageSlice = createSlice({
                 state.isLoading = true;
             })
             .addCase(getImage.fulfilled, (state, action)=>{
-                console.log(action)
                 state.isLoading = false;
                 state.isSuccess = true;
-                state.images = action.payload;
+                state.images = action.payload
             })
             .addCase(getImage.rejected, (state, action)=>{
                 state.isError = true;

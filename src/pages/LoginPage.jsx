@@ -67,7 +67,7 @@ const LoginPage= () =>{
 					<Col className="justify-content-center">
 						<Form onSubmit={submitHandler}>
 							<Form.Group controlId="email">
-								<Form.Label>Email Addrss</Form.Label>
+								<Form.Label>Email Adderss</Form.Label>
 								<Form.Control
 									type="email"
 									placeholder="Enter Email"

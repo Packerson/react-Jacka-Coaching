@@ -14,7 +14,6 @@ const Header = () =>{
 		dispatch(reset());
 		navigate("/login");
 	};
-	console.log(user)
 
     return (
         <div id="header" className="NCBox" > 
@@ -28,7 +27,7 @@ const Header = () =>{
                     
                     {user ? 
                         (
-                        <button onClick={logoutHandler}>Logout</button>
+                        <button onClick={logoutHandler}>Log out</button>
                          ):
                         <a href="/login">Login</a>  }
                     </div>
