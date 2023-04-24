@@ -5,6 +5,6 @@ import imageReducer from "../features/images/imagesSlice"
 export const store = configureStore({
   reducer: {
     auth: authReducer,
-    image: imageReducer,
+    images: imageReducer,
   },
 });
