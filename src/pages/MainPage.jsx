@@ -17,26 +17,28 @@ const MainPage = () => {
   const {user} = useSelector((state)=>state.auth)
 
   // actBtn for change classname in activ button
-  const [actBtn, setActBtn] = useState(["","","",""])
+  const initState = [["","","",""]]
+  const [actBtn, setActBtn] = useState(initState)
 
   // get value from pushed button
   const [pushedBtn, setPushedBtn] = useState(["","","",""])
-
-
+  
   const dispatch = useDispatch();
 
+  
   useEffect(() => {
     if (isError) {
       toast.error(message);
     }
-    if (user) {
-      // get image
-    // dispatch(getImage(JSON.stringify(pushedBtn)));
-      dispatch(getImage(pushedBtn));
+
+    if (user && actBtn !== initState) {
+      console.log(user.subscriber)
+      // get images
+      dispatch(getImage([pushedBtn]));
     }
     
     // listing on change 
-  }, [dispatch, isError, message, pushedBtn]);
+    }, [dispatch, isError, message, pushedBtn]);
 
 
   // list with buttons names to render components
@@ -45,25 +47,25 @@ const MainPage = () => {
 
   // get value and change class in list[0]
   const setBB = (e) => {
-    setPushedBtn([e.target.innerText, pushedBtn[1], pushedBtn[2], pushedBtn[3]])
+    setPushedBtn([e.target.innerText, pushedBtn[1], pushedBtn[2], pushedBtn[3], {user}])
     setActBtn([e.target.innerText, actBtn[1], actBtn[2], actBtn[3]])
   }
   
   // get value and change class in list[1]
   const setRFIor3B = (e) => {
-    setPushedBtn([pushedBtn[0],e.target.innerText, pushedBtn[2], pushedBtn[3]])
+    setPushedBtn([pushedBtn[0],e.target.innerText, pushedBtn[2], pushedBtn[3], {user}])
     setActBtn([actBtn[0], e.target.innerText, actBtn[2], actBtn[3]])
   }
 
   // get value and change class in list[2]
   const preFlopActionPlayer1 = (e) => {
-    setPushedBtn([pushedBtn[0], pushedBtn[1], e.target.innerText, pushedBtn[3]])
+    setPushedBtn([pushedBtn[0], pushedBtn[1], e.target.innerText, pushedBtn[3], {user}])
     setActBtn([actBtn[0], actBtn[1], e.target.innerText, actBtn[3]])
   }
 
   // get value and change class in list[3]
   const preFlopActionPlayer2 = (e) => {
-    setPushedBtn([pushedBtn[0], pushedBtn[1], pushedBtn[2], e.target.innerText,])
+    setPushedBtn([pushedBtn[0], pushedBtn[1], pushedBtn[2], e.target.innerText, {user}])
     setActBtn([actBtn[0], actBtn[1], actBtn[2], e.target.innerText])
   }
 
