@@ -6,13 +6,14 @@ import HeaderNew from './components/HeaderNew'
 import MainPage from './pages/MainPage'
 import Footer from './components/Footer';
 import LoginPage from "./pages/LoginPage"
+import HeaderJacka from "./components/HeaderJacka"
 
 
 const App = () => {
   return (
    <>
     <Router>
-      <Header/>
+      <HeaderNew/>
       <Routes>
         <Route path="/" element={<MainPage/>} />
         <Route path="login/" element={<LoginPage/>} />

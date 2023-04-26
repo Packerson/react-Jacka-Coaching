@@ -1,0 +1,165 @@
+.text-white {
+    color: var(--white);
+  }
+.relative {
+    position: relative;
+}
+
+.px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+.relative {
+    position: relative;
+  }
+
+  .md\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .md\:flex-nowrap {
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+  }
+  .text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  .py-5 {
+    padding-bottom: 1.25rem;
+    padding-top: 1.25rem;
+  }
+  .items-center {
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  .flex-wrap {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  .flex {
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+.container {
+width: 100%;
+}
+
+
+.md\:p-0 {
+  padding: 0;
+}
+
+.md\:flex-nowrap {
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+}
+
+.md\:flex-row {
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.md\:w-auto {
+  width: auto;
+}
+
+.md\:flex {
+  display: -ms-flexbox;
+  display: flex;
+}
+
+  .md\:ml-auto {
+  margin-left: auto;
+}
+.tracking-normal {
+  letter-spacing: 0;
+}
+.leading-normal {
+  line-height: 1.5;
+}
+.font-normal {
+  font-weight: 400;
+}
+.pb-0 {
+  padding-bottom: 0;
+}
+.p-4 {
+  padding: 1rem;
+}
+.items-center {
+  -ms-flex-align: center;
+  align-items: center;
+}
+.flex-wrap {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.flex-col {
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.w-screen {
+  width: 100vw;
+}
+.hidden {
+  display: none;
+}
+.flex {
+  display: -ms-flexbox;
+  display: flex;
+}
+.z-10 {
+  z-index: 10;
+}
+
+.body_font_family {
+    font-family: 'Barlow';
+  }
+
+  .lg\:inline-block {
+    display: inline-block;
+  }
+
+  .md\:w-auto {
+    width: auto;
+  }
+
+  .md\:block {
+    display: block;
+  }
+
+  .md\:mb-0 {
+    margin-bottom: 0;
+  }
+
+  .md\:ml-3 {
+    margin-left: .75rem;
+  }
+  .p-1 {
+    padding: .25rem;
+  }
+  .justify-center {
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+  .w-full {
+    width: 100%;
+  }
+  .flex {
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .mb-2 {
+    margin-bottom: .5rem;
+  }
+  a {
+    color: inherit;
+    text-decoration: inherit;
+  }

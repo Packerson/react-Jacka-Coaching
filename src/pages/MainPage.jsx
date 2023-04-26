@@ -88,7 +88,7 @@ const MainPage = () => {
             <div>
               {
                 BigBlindButtonsList.map((btn)=> 
-                <BigBlindButtons btn={btn} actBtn={actBtn} setBB={setBB} />
+                <BigBlindButtons btn={btn} actBtn={actBtn} setBB={setBB}  />
                )
               }
               
@@ -103,8 +103,8 @@ const MainPage = () => {
 
             <div className="RangeViewerComponentPreflopActionPlayer">
               {
-                RangeViewerComponentPreflopActionPlayer1.map((btn, idx)=> 
-                  <PreFlopActionButtons1 btn={btn} actBtn={actBtn} preFlopActionPlayer1={preFlopActionPlayer1}/>
+                RangeViewerComponentPreflopActionPlayer1.map((btn)=> 
+                  <PreFlopActionButtons1 btn={btn} actBtn={actBtn} preFlopActionPlayer1={preFlopActionPlayer1} />
                  )
               }
               
@@ -112,7 +112,7 @@ const MainPage = () => {
 
             <div className="RangeViewerComponentPreflopActionPlayer">
               {
-                RangeViewerComponentPreflopActionPlayer1.map((btn, idx)=> 
+                RangeViewerComponentPreflopActionPlayer1.map((btn)=> 
                   <PreFlopActionButtons2 btn={btn} actBtn={actBtn} preFlopActionPlayer2={preFlopActionPlayer2}/>
                  )
               }
