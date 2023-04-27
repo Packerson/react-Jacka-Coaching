@@ -5,8 +5,9 @@ import Header from './components/Header'
 import HeaderNew from './components/HeaderNew'
 import MainPage from './pages/MainPage'
 import Footer from './components/Footer';
+import FooterNew from './components/FooterNew';
 import LoginPage from "./pages/LoginPage"
-import HeaderJacka from "./components/HeaderJacka"
+
 
 
 const App = () => {
@@ -18,7 +19,7 @@ const App = () => {
         <Route path="/" element={<MainPage/>} />
         <Route path="login/" element={<LoginPage/>} />
       </Routes>
-      <Footer/>
+      <FooterNew/>
     </Router>
 
    </>
