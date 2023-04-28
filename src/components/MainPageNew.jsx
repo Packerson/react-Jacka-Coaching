@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getImage } from '../features/images/imagesSlice';
 import { toast } from "react-toastify";
 import { useNavigate} from 'react-router-dom'
-import Image from '../components/Image';
-import Spinner from '../components/Spinner';
+import { Container} from "react-bootstrap";
+
+
 import PreFlopActionButtons1 from '../components/PreFlopActionButtons1'
 import PreFlopActionButtons2 from '../components/PreFlopActionButtons2'
 import BigBlindButtons from '../components/BigBlindButtons'
+import backgroundImage from '../images/background.jpg';
 
 
 // display buttons and images, 
@@ -21,7 +23,7 @@ const MainPage = () => {
   )
   const {user} = useSelector((state)=>state.auth)
 
-  // actBtn for change classname in activ button
+  // actBtn for change classname(when clicked change color on blue) in activ button
   const initState = [["","","",""]]
   const [actBtn, setActBtn] = useState(initState)
 
@@ -33,13 +35,16 @@ const MainPage = () => {
 
 
   useEffect(() => {
+    // if error set message and display it
     if (isError) {
       toast.error(message);
     }
+    // if no user redirect to loginPage
     if (!user) {
       return navigate("/login/");
     }
 
+    // if user and buttons are not on init state dispatch getImage action and send data with value from buttons and user info
     if (user && actBtn !== initState) {
       console.log(user.subscriber)
       // get images
@@ -79,68 +84,84 @@ const MainPage = () => {
     setActBtn([actBtn[0], actBtn[1], actBtn[2], e.target.innerText])
   }
 
-  // if isLoading = True, spinner is activ , ususaly sth is wrong when you see it
-  // if (isLoading) {
-	// 	return <Spinner />;
-	// }
-
-
-  if (user) {
-
+// main style for Container
+const ContainerBox = {
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    height: '100vh',
+    width: "auto",
+    padding: "2rem",
+    textAlign: "center",
+    maxWidth: "100%",
+    maxHeight: "130%",
+}
+// if user exists render components
+if (user) {
   return (
     <>
-      <div className="ver1AppBox">
+      <Container style={ContainerBox}>
+
+
           <div className="RangeViewerComponentbox">
             <div>
+                {/* Function for render the Big Blinds buttons */}
               {
                 BigBlindButtonsList.map((btn)=> 
                 <BigBlindButtons btn={btn} actBtn={actBtn} setBB={setBB}  />
                )
               }
-              
             </div>
           </div>
 
+
+                {/* Render buttons */}
           <div className="RangeViewerComponentPreflopAction">
             <div className="RangeViewerComponentPreflopActionAction">
               <button className={`${actBtn[1] === "RFI" ? "btnActiv" : "btnUnActiv"}`} onClick={setRFIor3B}> RFI </button>
               <button className={`${actBtn[1] === "3bet" ? "btnActiv" : "btnUnActiv"}`} onClick={setRFIor3B}> 3bet </button>
             </div>
 
+                {/* Function for render PreFlopAction1 */}
             <div className="RangeViewerComponentPreflopActionPlayer">
               {
                 RangeViewerComponentPreflopActionPlayer1.map((btn)=> 
                   <PreFlopActionButtons1 btn={btn} actBtn={actBtn} preFlopActionPlayer1={preFlopActionPlayer1} />
                  )
               }
-              
             </div>
 
+                  {/* Function for render PreFlopAction2 */}
             <div className="RangeViewerComponentPreflopActionPlayer">
               {
                 RangeViewerComponentPreflopActionPlayer1.map((btn)=> 
                   <PreFlopActionButtons2 btn={btn} actBtn={actBtn} preFlopActionPlayer2={preFlopActionPlayer2}/>
                  )
               }
-              
             </div>
           </div>
+              
 
-          <div className="RangeViewerComponentRanges"><div>
+                {/* display images */}
+          <div className="RangeViewerComponentRanges">
+                {/* display image1 */}
+            <div>
             <div className='titleRange'> Title Range 1</div>
               <div className="RangeViewerComponentRangesRange">
                 <img src={images.image_url_1} alt="Logo1" className="rangeManual"/>
               </div>
             </div>
 
-          <div>
-          <div className='titleRange'> Title Range 2</div>
-            <div className="RangeViewerComponentRangesRange">
-              <img src={images.image_url_2} alt="Logo2" className="rangeManual"/>
+                {/* display image2 */}
+            <div>
+            <div className='titleRange'> Title Range 2</div>
+                <div className="RangeViewerComponentRangesRange">
+                <img src={images.image_url_2} alt="Logo2" className="rangeManual"/>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+      </Container>
     </>
   );
             };

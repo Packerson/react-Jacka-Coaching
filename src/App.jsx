@@ -2,13 +2,13 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 import Header from './components/Header'
-import HeaderNew from './components/HeaderNew'
 import MainPage from './pages/MainPage'
 import Footer from './components/Footer';
-import FooterNew from './components/FooterNew';
+
 import LoginPage from "./pages/LoginPage"
-
-
+import HeaderNew from './components/HeaderNew'
+import MainPageNew from "./components/MainPageNew"
+import FooterNew from './components/FooterNew';
 
 const App = () => {
   return (
@@ -16,7 +16,7 @@ const App = () => {
     <Router>
       <HeaderNew/>
       <Routes>
-        <Route path="/" element={<MainPage/>} />
+        <Route path="/" element={<MainPageNew/>} />
         <Route path="login/" element={<LoginPage/>} />
       </Routes>
       <FooterNew/>

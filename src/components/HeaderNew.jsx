@@ -7,17 +7,29 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
 
 
+// header component
 const HeaderNew = () => {
+
+  // get user from state
   const { user } = useSelector((state) => state.auth);
+
   const navigate = useNavigate();
   const dispatch = useDispatch()
 
+  // log out function
   const logoutHandler = () => {
-  dispatch(logout());
-  dispatch(reset());
+
+    // redirect to loginPage
   navigate("/login");
+
+    // log out
+  dispatch(logout());
+
+    // reset state
+  dispatch(reset());
 };
 
+  // main container style
   const navbarStyle = {
     backgroundColor: "#011326ff",
     color: "white",
@@ -25,16 +37,20 @@ const HeaderNew = () => {
     paddingRight: '1rem',
   };
 
+  // logo style
   const logo = {
     maxHeight: "100px", width: "80px",
   }
 
+  // font color
   const white = {color: 'white'}
   
   return (
     <>
     <Navbar collapseOnSelect  style={navbarStyle}  expand="md"  variant="dark">
       <Container>
+
+        {/* logo display */}
         <Navbar.Brand className="mw-10 ml-auto"  href="#home">
             <img style={logo} src={require("../images/logoJakaCoaching.png")} alt="Logo" />
         </Navbar.Brand>
@@ -42,11 +58,12 @@ const HeaderNew = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" className="ml-auto"/>
         <Navbar.Collapse className="justify-content-end " id="responsive-navbar-nav">
           <Nav >
+            {/* if user display logout else sing In */}
             {user ?
               (
                 <Nav.Link style={white} onClick={logoutHandler} href="/" >Log out </Nav.Link>
               ):
-              <Nav.Link style={white} href="/login" >Login </Nav.Link>
+              <Nav.Link style={white} href="/login" >Sign In</Nav.Link>
             }
             
             <Nav.Link style={white} href="#Home">Home</Nav.Link>
@@ -55,7 +72,7 @@ const HeaderNew = () => {
             <Nav.Link style={white} href="#Lessons">Lessons</Nav.Link>
             <Nav.Link style={white} href="#FAQ">FAQ</Nav.Link>
             <Nav.Link style={white} href="#Contact Us">Contact Us</Nav.Link>
-            <Nav.Link style={white} href="#Sign In">Sign In</Nav.Link>
+            
 
           </Nav>
          
@@ -69,27 +86,3 @@ const HeaderNew = () => {
 
 export default HeaderNew
 
-
-
-{/* <Navbar className="NCBOX" collapseOnSelect expand="md"  style={navbarStyle}>
-      <Container style={white}>
-        <Navbar.Brand href="#home">
-            <img src={require("../images/logoJakaCoaching.png")} alt="Logo" />
-        </Navbar.Brand>
-
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-           
-              <Nav.Link style={white} href="#Home">Home</Nav.Link>
-              <Nav.Link style={white} href="#Tools">Tools</Nav.Link>
-              <Nav.Link style={white} href="#Discord">Discord</Nav.Link>
-              <Nav.Link style={white} href="#Lessons">Lessons</Nav.Link>
-              <Nav.Link style={white} href="#FAQ">FAQ</Nav.Link>
-              <Nav.Link style={white} href="#Contact Us">Contact Us</Nav.Link>
-              <Nav.Link style={white} href="#Sign In">Sign In</Nav.Link>
-           
-          </Nav>
-          </Navbar.Collapse>
-      </Container>
-    </Navbar> */}

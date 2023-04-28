@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import imageService from './imagesService';
 
-
+// init state
 const initialState = {
     images: {},
     isError: false,
@@ -14,6 +14,7 @@ const initialState = {
 export const getImage = createAsyncThunk(
     'images/getAll',
 
+    // send data to backend
     async(dataFromBtn, thunkAPI) =>{
         try{
             return await imageService.getImage(dataFromBtn);
