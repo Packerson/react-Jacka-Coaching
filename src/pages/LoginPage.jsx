@@ -6,6 +6,7 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 
 import Spinner from "../components/Spinner";
 import { login, reset } from "../features/auth/authSlice";
+import backgroundImage from '../images/background.jpg';
 
 
 const LoginPage= () =>{
@@ -22,7 +23,7 @@ const LoginPage= () =>{
 
 
     useEffect(()=>{
-        if (isError){
+        if (isError || message){
             toast.error(message);
         }
 
@@ -48,26 +49,34 @@ const LoginPage= () =>{
 		dispatch(login(userData));
 	};
 
+	const ContainerBox = {
+		backgroundImage: `url(${backgroundImage})`,
+		backgroundPosition: 'center',
+		backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+		maxWidth: "100%",
+		maxHeight: "130%",
+		color: "white",
+	}
+
+	
+
     return(
         <>
-			<Container>
-				<Row>
-					<Col className="mg-top text-center">
-						<section>
-							<h1>
-								Login
-							</h1>
-							<hr className="hr-text" />
-						</section>
-					</Col>
-				</Row>
+			<Container style={ContainerBox} >
 
 				{isLoading && <Spinner />}
-				<Row className="mt-3">
-					<Col className="justify-content-center">
+				<Row className="mt-1">
+					<Col className="justify-content-center mb-3">
+						<h2>
+							Write your email
+						</h2>
 						<Form onSubmit={submitHandler}>
 							<Form.Group controlId="email">
-								<Form.Label>Email Adderss</Form.Label>
 								<Form.Control
 									type="email"
 									placeholder="Enter Email"
@@ -86,7 +95,6 @@ const LoginPage= () =>{
 						</Form>
 					</Col>
 				</Row>
-                <img src={require("../images/background.jpg")} alt="background" />
 			</Container>
 		</>
        
