@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 const BigBlindButtons = ({btn, actBtn, setBB} ) => {
 
   return (

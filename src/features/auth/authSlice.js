@@ -54,13 +54,18 @@ export const authSlice = createSlice({
         .addCase(login.pending, (state) => {
             state.isLoading = true;
         })
-        // login success
+		
+        // login success (if INFO message,
+		//  				save message, set dont set user)
+		// 					else set user
         .addCase(login.fulfilled, (state, action) => {
             state.isLoading = false;
             
 			if (action.payload.INFO) {
-            	state.message = action.payload.INFO;
-				state.isSuccess = false;	
+				state.isError = true;
+				state.message = action.payload.INFO;
+				state.isSuccess = false;
+					
 			} else {
 				state.user = action.payload;
 				state.isSuccess = true;

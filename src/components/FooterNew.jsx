@@ -1,9 +1,10 @@
 import React from "react";
 import {Col, Container, Row} from 'react-bootstrap'
 
-
+// Footer Component
 const FooterNew = () => {
 
+    // style for main Container
     const FooterBox = {
         backgroundColor: "#011326ff",         
         width: "100%",
@@ -12,13 +13,11 @@ const FooterNew = () => {
         paddingLeft: '1rem',
         paddingRight: '1rem',
           }
-
+    
+    //   style for logo
     const logo = {
         maxHeight: "100px", width: "80px",
         }
-
-    const white = {color: 'white'}
-      
 
   return (
     <footer style={FooterBox} className="fixed-bottom ">

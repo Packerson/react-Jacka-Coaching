@@ -1,6 +1,6 @@
 import axios from "axios";
 
-
+// link to backend to check user email
 const CHECK_EMAIL_URL = "http://localhost:8000/api/v1/check/check/";
 
 
@@ -14,12 +14,14 @@ const login = async (userData) => {
 		},
 	};
 	const response = await axios.post(CHECK_EMAIL_URL, userData, config);
+
+	// if no info in response save data in localStore as a user
 	if (!response.data.INFO) {
 		
 		localStorage.setItem("user", JSON.stringify(response.data));
 		return response.data;
+
 	}else {
-		console.log(response.data.INFO)
 		return response.data
 	}
 };

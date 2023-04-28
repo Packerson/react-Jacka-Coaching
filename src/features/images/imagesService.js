@@ -1,8 +1,10 @@
 import axios from "axios";
 
+// link to backend 
 const GET_IMAGES_URL = "http://localhost:8000/api/v1/image/";
 
-// Get link to image
+// send POST with data from buttons and user info
+// if ok Get link to images
 const getImage = async (dataFromBtn) => {
     const config = {
         header: {
@@ -14,7 +16,6 @@ const getImage = async (dataFromBtn) => {
     if (response.data) {
 		localStorage.setItem("image_url", JSON.stringify(response.data));
 	}
-    console.log(response.data)
     return response.data
 };
 
