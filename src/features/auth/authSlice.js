@@ -53,6 +53,7 @@ export const authSlice = createSlice({
         // send user data
         .addCase(login.pending, (state) => {
             state.isLoading = true;
+			state.message = ""
         })
 		
         // login success (if INFO message,
@@ -62,13 +63,14 @@ export const authSlice = createSlice({
             state.isLoading = false;
             
 			if (action.payload.INFO) {
-				state.isError = true;
 				state.message = action.payload.INFO;
 				state.isSuccess = false;
 					
 			} else {
 				state.user = action.payload;
 				state.isSuccess = true;
+				// state.message = ""
+				
 			}
         })
         // login rejected, save message
