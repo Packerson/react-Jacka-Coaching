@@ -37,28 +37,32 @@ const LoginPage= () =>{
         }
 
 		// listening on change one of these elements 
-    	},[isError, isSuccess, message, user]);
+    	},[isError, isSuccess, user, message]);
 
 
 	// submit function if everthing ok dispatch login action
     const submitHandler = (e) => {
 		
+		
 		e.preventDefault();
+		
 		// set email
 		const userData = {
 			email,
 		};
 		// if message display in toast container
-		if (message){
-			toast.error(message);
-		}
+		// if (message){
+		// 	toast.error(message);
+		// }
 		// if not email display error message
 		if (!email) {
 			toast.error("An email must be provided");
 		} else 
 
 		// if everthing ok dispatch login action
-		{
+		{	
+			// toast.dismiss()
+			dispatch(reset);
 			dispatch(login(userData));
 		}
 	};
@@ -78,6 +82,7 @@ const LoginPage= () =>{
 		color: "white",
 	}
 
+	const white = {color: 'white'}
 
     return(
         <>
@@ -96,7 +101,7 @@ const LoginPage= () =>{
 						{message
 							?
 								(
-									<a href="https://www.jakacoaching.com/">{message}</a>
+									<h3><a style={{color: 'red'}} href="https://www.jakacoaching.com/">{message}</a></h3>
 								):
 									false 
 						}
