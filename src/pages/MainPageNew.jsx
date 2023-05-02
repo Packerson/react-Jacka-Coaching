@@ -18,17 +18,17 @@ import backgroundImage from '../images/background.jpg';
 const MainPage = () => {
 
   // unpack state.image
-  const { images, isLoading, isError, message } = useSelector(
+  const { images, isError, message } = useSelector(
     (state) => state.images
   )
   const {user} = useSelector((state)=>state.auth)
 
-  // actBtn for change classname(when clicked change color on blue) in activ button
-  const initState = [["","","",""]]
-  const [actBtn, setActBtn] = useState(initState)
+  // actBtn for change classname(when clicked change color on blue) in activ button, init value for default charts
+  // const initState = [["30BB","3bet","HJ","MP", false]]
+  const [actBtn, setActBtn] = useState(["30BB","3bet","HJ","MP"])
 
   // get value from pushed button
-  const [pushedBtn, setPushedBtn] = useState(["","","",""])
+  const [pushedBtn, setPushedBtn] = useState(["30BB","3bet","HJ","MP", false])
   
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -45,14 +45,14 @@ const MainPage = () => {
     }
 
     // if user and buttons are not on init state dispatch getImage action and send data with value from buttons and user info
-    if (user && actBtn !== initState) {
+    if (user) {
       console.log(user.subscriber)
       // get images
-      dispatch(getImage([pushedBtn]));
+      dispatch(getImage(pushedBtn));
     }
     
     // listing on change 
-    }, [dispatch, isError, message, pushedBtn, user]);
+    }, [ dispatch, isError, user, pushedBtn]);
 
     
 
@@ -62,25 +62,25 @@ const MainPage = () => {
 
   // get value and change class in list[0]
   const setBB = (e) => {
-    setPushedBtn([e.target.innerText, pushedBtn[1], pushedBtn[2], pushedBtn[3], {user}])
+    setPushedBtn([e.target.innerText, pushedBtn[1], pushedBtn[2], pushedBtn[3], user.subscriber])
     setActBtn([e.target.innerText, actBtn[1], actBtn[2], actBtn[3]])
   }
   
   // get value and change class in list[1]
   const setRFIor3B = (e) => {
-    setPushedBtn([pushedBtn[0],e.target.innerText, pushedBtn[2], pushedBtn[3], {user}])
+    setPushedBtn([pushedBtn[0],e.target.innerText, pushedBtn[2], pushedBtn[3], user.subscriber])
     setActBtn([actBtn[0], e.target.innerText, actBtn[2], actBtn[3]])
   }
 
   // get value and change class in list[2]
   const preFlopActionPlayer1 = (e) => {
-    setPushedBtn([pushedBtn[0], pushedBtn[1], e.target.innerText, pushedBtn[3], {user}])
+    setPushedBtn([pushedBtn[0], pushedBtn[1], e.target.innerText, pushedBtn[3], user.subscriber])
     setActBtn([actBtn[0], actBtn[1], e.target.innerText, actBtn[3]])
   }
 
   // get value and change class in list[3]
   const preFlopActionPlayer2 = (e) => {
-    setPushedBtn([pushedBtn[0], pushedBtn[1], pushedBtn[2], e.target.innerText, {user}])
+    setPushedBtn([pushedBtn[0], pushedBtn[1], pushedBtn[2], e.target.innerText, user.subscriber])
     setActBtn([actBtn[0], actBtn[1], actBtn[2], e.target.innerText])
   }
 
@@ -141,26 +141,33 @@ if (user) {
               }
             </div>
           </div>
-              
 
-                {/* display images */}
-          <div className="RangeViewerComponentRanges">
+
+          {/* display images , if message display message else display images*/}      
+          {images.message ?
+          
+            (
+              <h2 style={{color:"white"}}>Charts not found</h2>
+            ):
+              <div className="RangeViewerComponentRanges">
                 {/* display image1 */}
-            <div>
-            <div className='titleRange'> Title Range 1</div>
-              <div className="RangeViewerComponentRangesRange">
-                <img src={images.image_url_1} alt="Logo1" className="rangeManual"/>
-              </div>
-            </div>
-
-                {/* display image2 */}
-            <div>
-            <div className='titleRange'> Title Range 2</div>
-                <div className="RangeViewerComponentRangesRange">
-                <img src={images.image_url_2} alt="Logo2" className="rangeManual"/>
+                <div>
+                  <div className='titleRange'> Chart 1</div>
+                  <div className="RangeViewerComponentRangesRange">
+                    <img src={images.image_url_1} alt="Logo1" className="rangeManual"/>
+                  </div>
                 </div>
-            </div>
-        </div>
+
+                    {/* display image2 */}
+                <div>
+                <div className='titleRange'> Chart 2</div>
+                    <div className="RangeViewerComponentRangesRange">
+                    <img src={images.image_url_2} alt="Logo2" className="rangeManual"/>
+                    </div>
+                </div>
+              </div>
+          }
+          
       </Container>
     </>
   );

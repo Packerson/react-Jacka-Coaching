@@ -1,7 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import authService from "./authService";
 
-const user = localStorage.getItem("user");
+// need to parse value from local storage, 
+// otherwise browser after refreshing page will change value to string
+const user = JSON.parse(localStorage.getItem("user"));
 
 // Initial state, if user set user else set null
 const initialState = {
