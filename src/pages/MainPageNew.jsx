@@ -18,7 +18,7 @@ import backgroundImage from '../images/background.jpg';
 const MainPage = () => {
 
   // unpack state.image
-  const { images, isLoading, isError, message } = useSelector(
+  const { images, isError, message } = useSelector(
     (state) => state.images
   )
   const {user} = useSelector((state)=>state.auth)
@@ -141,26 +141,33 @@ if (user) {
               }
             </div>
           </div>
-              
 
-                {/* display images */}
-          <div className="RangeViewerComponentRanges">
+
+          {/* display images , if message display message else display images*/}      
+          {images.message ?
+          
+            (
+              <h2 style={{color:"white"}}>Charts not found</h2>
+            ):
+              <div className="RangeViewerComponentRanges">
                 {/* display image1 */}
-            <div>
-            <div className='titleRange'> Chart 1</div>
-              <div className="RangeViewerComponentRangesRange">
-                <img src={images.image_url_1} alt="Logo1" className="rangeManual"/>
-              </div>
-            </div>
-
-                {/* display image2 */}
-            <div>
-            <div className='titleRange'> Chart 2</div>
-                <div className="RangeViewerComponentRangesRange">
-                <img src={images.image_url_2} alt="Logo2" className="rangeManual"/>
+                <div>
+                  <div className='titleRange'> Chart 1</div>
+                  <div className="RangeViewerComponentRangesRange">
+                    <img src={images.image_url_1} alt="Logo1" className="rangeManual"/>
+                  </div>
                 </div>
-            </div>
-        </div>
+
+                    {/* display image2 */}
+                <div>
+                <div className='titleRange'> Chart 2</div>
+                    <div className="RangeViewerComponentRangesRange">
+                    <img src={images.image_url_2} alt="Logo2" className="rangeManual"/>
+                    </div>
+                </div>
+              </div>
+          }
+          
       </Container>
     </>
   );
