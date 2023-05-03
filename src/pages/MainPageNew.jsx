@@ -92,16 +92,24 @@ const ContainerBox = {
     backgroundRepeat: 'no-repeat',
     height: '100vh',
     width: "auto",
-    padding: "2rem",
+    paddingLeft: "2rem",
+    paddingRight: '2rem',
     textAlign: "center",
     maxWidth: "100%",
-    maxHeight: "130%",
+    maxHeight: "100%",
+    display: "flex",
+    justifyContent: 'center',
+    flexDirection: "column",
+    alignItems: 'center',
+    flexWrap: "wrap",
+    overflow: "auto",
 }
+
 // if user exists render components
 if (user) {
   return (
     <>
-      <Container style={ContainerBox}>
+      <Container style={ContainerBox} fluid>
 
 
           <div className="RangeViewerComponentbox">

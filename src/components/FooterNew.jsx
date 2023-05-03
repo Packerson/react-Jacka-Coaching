@@ -20,18 +20,19 @@ const FooterNew = () => {
         }
 
   return (
-    <footer style={FooterBox} className="fixed-bottom ">
+    <footer style={FooterBox} className=" ">
         <Container className= "">
-            <Row className="mt-2 mb-2">
+            <Row className="mt-0 mb-0">
                 <Col className="mw-10 ml-auto mx-auto mt-auto" >
-                    <img style={logo} src={require("../images/logoJakaCoaching.png")} alt="Logo" />
+                    <a href="https://jakacoaching.com/"><img style={logo} src={require("../images/logoJakaCoaching.png")} alt="Logo" /></a>
+                    
                 </Col>
 
                 <Col className="d-flex justify-content-end mr-0">
-                    <a className="p-3" href="https://www.facebook.com">Facebook</a>
-                    <a className="p-3" href="https://www.Twitter.com">Twitter</a>
-                    <a className="p-3" href="https://www.Instagram.com">Instagram</a>
-                    <a className="p-3" href="https://www.Youtube.com">Youtube</a> 
+                    <a className="p-1" href="https://www.facebook.com">Facebook</a>
+                    <a className="p-1" href="https://www.Twitter.com">Twitter</a>
+                    <a className="p-1" href="https://www.Instagram.com">Instagram</a>
+                    <a className="p-1" href="https://www.Youtube.com">Youtube</a> 
                 </Col>
             </Row>
         </Container>

@@ -51,7 +51,7 @@ const HeaderNew = () => {
       <Container>
 
         {/* logo display */}
-        <Navbar.Brand className="mw-10 ml-auto"  href="#home">
+        <Navbar.Brand className="mw-10 ml-auto"  href="https://jakacoaching.com/">
             <img style={logo} src={require("../images/logoJakaCoaching.png")} alt="Logo" />
         </Navbar.Brand>
         
@@ -66,12 +66,12 @@ const HeaderNew = () => {
               <Nav.Link style={white} href="/login" >Sign In</Nav.Link>
             }
             
-            <Nav.Link style={white} href="#Home">Home</Nav.Link>
+            <Nav.Link style={white} href="https://jakacoaching.com/pages/start-here">Home</Nav.Link>
             <Nav.Link style={white} href="#Tools">Tools</Nav.Link>
-            <Nav.Link style={white} href="#Discord">Discord</Nav.Link>
-            <Nav.Link style={white} href="#Lessons">Lessons</Nav.Link>
-            <Nav.Link style={white} href="#FAQ">FAQ</Nav.Link>
-            <Nav.Link style={white} href="#Contact Us">Contact Us</Nav.Link>
+            <Nav.Link style={white} href="https://discord.com/invite/s3yx6KykJ3">Discord</Nav.Link>
+            <Nav.Link style={white} href="https://jakacoaching.com/catalog">Lessons</Nav.Link>
+            <Nav.Link style={white} href="https://jakacoaching.com/pages/faq">FAQ</Nav.Link>
+            <Nav.Link style={white} href="https://jakacoaching.com/pages/contact-58">Contact Us</Nav.Link>
             
 
           </Nav>
