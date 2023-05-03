@@ -2,7 +2,7 @@ import React from "react";
 import {Col, Container, Row} from 'react-bootstrap'
 
 // Footer Component
-const FooterNew = () => {
+const Footer = () => {
 
     // style for main Container
     const FooterBox = {
@@ -41,4 +41,4 @@ const FooterNew = () => {
   )
 }
 
-export default FooterNew
+export default Footer
