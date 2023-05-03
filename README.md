@@ -13,6 +13,11 @@
  ### / MainPage 
 After login, a request with default values is sent to the backend, receiving default charts with subscriber=false. 
 Every click on the button sends a new request to the backend, then the backend checks if the button combinations exist in the database. <br>
+Default query:
+````
+  ["30BB","3bet","HJ","MP", false]
+  ````
+
   Possible answers:
   - two links to images 
   - or info no charts in DB
