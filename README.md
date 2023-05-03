@@ -1,19 +1,18 @@
 # React App for Range views.
 
-## Endpoitns: 
+## Endpoints: 
   - /  
   - /login  
   
  ### In Login page, 
- Input email. Request is send to backend,to check user in database or check him on uscreen. 
- If uesr on uscreen, create new user in database<br>
+  Input email. Request is sent to the backend,to check the user in the database or check him on uscreen. If uesr on uscreen, create new user in database<br>
   Possible answers:
- - usere with details info (subscriber boolean)
- - or message to creat account on JackaCochaing
+ - users with details info (subscriber boolean)
+ - or message to create account on JackaCochaing
  
  ### / MainPage 
- After login, request with default values is send to backend, recive default charts with subscriber=false.
-Every clikc on button send new request to backend, then backend check if the button combinations exists in database. <br>
+After login, a request with default values is sent to the backend, receiving default charts with subscriber=false. 
+Every click on the button sends a new request to the backend, then the backend checks if the button combinations exist in the database. <br>
   Possible answers:
   - two links to images 
   - or info no charts in DB
