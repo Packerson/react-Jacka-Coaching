@@ -116,8 +116,8 @@ if (user) {
             <div>
                 {/* Function for render the Big Blinds buttons */}
               {
-                BigBlindButtonsList.map((btn)=> 
-                <BigBlindButtons btn={btn} actBtn={actBtn} setBB={setBB}  />
+                BigBlindButtonsList.map((btn, idx)=> 
+                <BigBlindButtons btn={btn} idx={idx} actBtn={actBtn} setBB={setBB}  />
                )
               }
             </div>
@@ -134,8 +134,8 @@ if (user) {
                 {/* Function for render PreFlopAction1 */}
             <div className="RangeViewerComponentPreflopActionPlayer">
               {
-                RangeViewerComponentPreflopActionPlayer1.map((btn)=> 
-                  <PreFlopActionButtons1 btn={btn} actBtn={actBtn} preFlopActionPlayer1={preFlopActionPlayer1} />
+                RangeViewerComponentPreflopActionPlayer1.map((btn, idx)=> 
+                  <PreFlopActionButtons1 btn={btn} idx={idx}  actBtn={actBtn} preFlopActionPlayer1={preFlopActionPlayer1} />
                  )
               }
             </div>
@@ -143,8 +143,8 @@ if (user) {
                   {/* Function for render PreFlopAction2 */}
             <div className="RangeViewerComponentPreflopActionPlayer">
               {
-                RangeViewerComponentPreflopActionPlayer1.map((btn)=> 
-                  <PreFlopActionButtons2 btn={btn} actBtn={actBtn} preFlopActionPlayer2={preFlopActionPlayer2}/>
+                RangeViewerComponentPreflopActionPlayer1.map((btn, idx)=> 
+                  <PreFlopActionButtons2 btn={btn} idx={idx} actBtn={actBtn} preFlopActionPlayer2={preFlopActionPlayer2}/>
                  )
               }
             </div>

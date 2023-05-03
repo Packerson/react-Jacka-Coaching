@@ -8,7 +8,7 @@ import { logout, reset } from "../features/auth/authSlice";
 
 
 // header component
-const HeaderNew = () => {
+const Header = () => {
 
   // get user from state
   const { user } = useSelector((state) => state.auth);
@@ -84,5 +84,5 @@ const HeaderNew = () => {
   )
 }
 
-export default HeaderNew
+export default Header
 
