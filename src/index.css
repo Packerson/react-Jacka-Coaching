@@ -129,6 +129,7 @@ div.text-center {
 
 .RangeViewerComponentPreflopAction {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -136,20 +137,7 @@ div.text-center {
 }
 .RangeViewerComponentPreflopActionAction, .RangeViewerComponentPreflopActionPlayer {
   display: flex;
-  flex-direction: column;
-  margin-left: 3px;
-  margin-right: 3px;
-}
-
-.RangeViewerComponentPreflopActionAction, .RangeViewerComponentPreflopActionPlayer {
-  display: flex;
-  flex-direction: column;
-  margin-left: 3px;
-  margin-right: 3px;
-}
-
-.RangeViewerComponentPreflopActionAction, .RangeViewerComponentPreflopActionPlayer {
-  display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   margin-left: 3px;
   margin-right: 3px;
@@ -157,6 +145,7 @@ div.text-center {
 
 .RangeViewerComponentRanges {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
   justify-content: center;
