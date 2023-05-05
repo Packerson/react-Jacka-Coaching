@@ -1,10 +1,10 @@
 import React from 'react'
 
 
-const BigBlindButtons = ({btn, actBtn, setBB, idx} ) => {
+const BigBlindButtons = ({btn, pushedBtn, setBB, idx} ) => {
 
   return (
-    <button className={`${actBtn[0] === btn ? "btnActiv" : "btnUnActiv"}`} key={idx} onClick={setBB} >{btn}</button>
+    <button className={`${pushedBtn[0] === btn ? "btnActiv" : "btnUnActiv"}`} key={idx} onClick={setBB} >{btn}</button>
   )
 }
 

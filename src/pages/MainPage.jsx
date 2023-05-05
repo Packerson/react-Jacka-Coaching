@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getImage } from '../features/images/imagesSlice';
 import { toast } from "react-toastify";
 import { useNavigate} from 'react-router-dom'
-import { Container} from "react-bootstrap";
 
-
+import { getImage } from '../features/images/imagesSlice';
 import PreFlopActionButtons1 from '../components/PreFlopActionButtons1'
 import PreFlopActionButtons2 from '../components/PreFlopActionButtons2'
 import BigBlindButtons from '../components/BigBlindButtons'
-import backgroundImage from '../images/background.jpg';
 
 
 // display buttons and images, 
@@ -23,11 +20,8 @@ const MainPage = () => {
   )
   const {user} = useSelector((state)=>state.auth)
 
-  // actBtn for change classname(when clicked change color on blue) in activ button, init value for default charts
-  // const initState = [["30BB","3bet","HJ","MP", false]]
-  const [actBtn, setActBtn] = useState(["30BB","3bet","HJ","MP"])
-
-  // get value from pushed button
+  // get value from pushed button and change classname(when clicked change color on blue) in 
+  // activ button, init value for default charts
   const [pushedBtn, setPushedBtn] = useState(["30BB","3bet","HJ","MP", false])
   
   const dispatch = useDispatch();
@@ -44,7 +38,8 @@ const MainPage = () => {
       return navigate("/login/");
     }
 
-    // if user and buttons are not on init state dispatch getImage action and send data with value from buttons and user info
+    // if user and buttons are not on init state dispatch getImage action and send data
+    //  with value from buttons and user info
     if (user) {
       console.log(user.subscriber)
       // get images
@@ -63,88 +58,61 @@ const MainPage = () => {
   // get value and change class in list[0]
   const setBB = (e) => {
     setPushedBtn([e.target.innerText, pushedBtn[1], pushedBtn[2], pushedBtn[3], user.subscriber])
-    setActBtn([e.target.innerText, actBtn[1], actBtn[2], actBtn[3]])
   }
   
   // get value and change class in list[1]
   const setRFIor3B = (e) => {
     setPushedBtn([pushedBtn[0],e.target.innerText, pushedBtn[2], pushedBtn[3], user.subscriber])
-    setActBtn([actBtn[0], e.target.innerText, actBtn[2], actBtn[3]])
   }
 
   // get value and change class in list[2]
   const preFlopActionPlayer1 = (e) => {
     setPushedBtn([pushedBtn[0], pushedBtn[1], e.target.innerText, pushedBtn[3], user.subscriber])
-    setActBtn([actBtn[0], actBtn[1], e.target.innerText, actBtn[3]])
   }
 
   // get value and change class in list[3]
   const preFlopActionPlayer2 = (e) => {
     setPushedBtn([pushedBtn[0], pushedBtn[1], pushedBtn[2], e.target.innerText, user.subscriber])
-    setActBtn([actBtn[0], actBtn[1], actBtn[2], e.target.innerText])
   }
 
-// main style for Container
-const ContainerBox = {
-    backgroundImage: `url(${backgroundImage})`,
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    height: '100vh',
-    width: "auto",
-    paddingLeft: "2rem",
-    paddingRight: '2rem',
-    textAlign: "center",
-    maxWidth: "100%",
-    maxHeight: "100%",
-    display: "flex",
-    justifyContent: 'center',
-    flexDirection: "column",
-    alignItems: 'center',
-    flexWrap: "wrap",
-    overflow: "auto",
-}
 
 // if user exists render components
 if (user) {
   return (
     <>
-      <Container style={ContainerBox} fluid>
-
-
-          <div className="RangeViewerComponentbox">
-            <div>
+          <div className="ContainerBox">
+            <div className='RangeViewerComponentbox '>
                 {/* Function for render the Big Blinds buttons */}
               {
                 BigBlindButtonsList.map((btn, idx)=> 
-                <BigBlindButtons btn={btn} idx={idx} actBtn={actBtn} setBB={setBB}  />
+                <BigBlindButtons btn={btn} idx={idx} pushedBtn={pushedBtn} setBB={setBB}  />
                )
               }
             </div>
-          </div>
+          
 
 
-                {/* Render buttons */}
-          <div className="RangeViewerComponentPreflopAction">
+                {/* Render PreFlopActionbuttons */}
+          <div className="RangeViewerComponentPreflopAction  ">
             <div className="RangeViewerComponentPreflopActionAction">
-              <button className={`${actBtn[1] === "RFI" ? "btnActiv" : "btnUnActiv"}`} onClick={setRFIor3B}> RFI </button>
-              <button className={`${actBtn[1] === "3bet" ? "btnActiv" : "btnUnActiv"}`} onClick={setRFIor3B}> 3bet </button>
+              <button className={`${pushedBtn[1] === "RFI" ? "btnActiv" : "btnUnActiv"}`} onClick={setRFIor3B}> RFI </button>
+              <button className={`${pushedBtn[1] === "3bet" ? "btnActiv" : "btnUnActiv"}`} onClick={setRFIor3B}> 3bet </button>
             </div>
 
                 {/* Function for render PreFlopAction1 */}
-            <div className="RangeViewerComponentPreflopActionPlayer">
+            <div className="RangeViewerComponentPreflopActionPlayer ">
               {
                 RangeViewerComponentPreflopActionPlayer1.map((btn, idx)=> 
-                  <PreFlopActionButtons1 btn={btn} idx={idx}  actBtn={actBtn} preFlopActionPlayer1={preFlopActionPlayer1} />
+                  <PreFlopActionButtons1 btn={btn} idx={idx} pushedBtn={pushedBtn} preFlopActionPlayer1={preFlopActionPlayer1} />
                  )
               }
             </div>
 
                   {/* Function for render PreFlopAction2 */}
-            <div className="RangeViewerComponentPreflopActionPlayer">
+            <div className="RangeViewerComponentPreflopActionPlayer ">
               {
                 RangeViewerComponentPreflopActionPlayer1.map((btn, idx)=> 
-                  <PreFlopActionButtons2 btn={btn} idx={idx} actBtn={actBtn} preFlopActionPlayer2={preFlopActionPlayer2}/>
+                  <PreFlopActionButtons2 btn={btn} idx={idx} pushedBtn={pushedBtn} preFlopActionPlayer2={preFlopActionPlayer2}/>
                  )
               }
             </div>
@@ -157,10 +125,10 @@ if (user) {
             (
               <h2 style={{color:"white"}}>Charts not found</h2>
             ):
-              <div className="RangeViewerComponentRanges">
+              <div className="RangeViewerComponentRanges ">
                 {/* display image1 */}
                 <div>
-                  <div className='titleRange'> Chart 1</div>
+                  
                   <div className="RangeViewerComponentRangesRange">
                     <img src={images.image_url_1} alt="Logo1" className="rangeManual"/>
                   </div>
@@ -168,15 +136,15 @@ if (user) {
 
                     {/* display image2 */}
                 <div>
-                <div className='titleRange'> Chart 2</div>
+                
                     <div className="RangeViewerComponentRangesRange">
                     <img src={images.image_url_2} alt="Logo2" className="rangeManual"/>
                     </div>
                 </div>
               </div>
           }
-          
-      </Container>
+          </div>
+      
     </>
   );
             };
