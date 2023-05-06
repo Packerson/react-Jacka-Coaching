@@ -20,7 +20,7 @@ const Footer = () => {
         }
 
   return (
-    <footer style={FooterBox} className=" ">
+    <footer style={FooterBox} className="Footer">
         <Container className= "">
             <Row className="mt-0 mb-0">
                 <Col className="mw-10 ml-auto mx-auto mt-auto" >

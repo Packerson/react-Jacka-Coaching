@@ -82,8 +82,6 @@ const LoginPage= () =>{
 		color: "white",
 	}
 
-	const white = {color: 'white'}
-
     return(
         <>
 			<Container style={ContainerBox} >

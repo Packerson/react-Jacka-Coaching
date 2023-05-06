@@ -67,7 +67,7 @@ const Header = () => {
             }
             
             <Nav.Link style={white} href="https://jakacoaching.com/pages/start-here">Home</Nav.Link>
-            <Nav.Link style={white} href="#Tools">Tools</Nav.Link>
+            <Nav.Link style={white} href="/">Tools</Nav.Link>
             <Nav.Link style={white} href="https://discord.com/invite/s3yx6KykJ3">Discord</Nav.Link>
             <Nav.Link style={white} href="https://jakacoaching.com/catalog">Lessons</Nav.Link>
             <Nav.Link style={white} href="https://jakacoaching.com/pages/faq">FAQ</Nav.Link>
