@@ -348,8 +348,9 @@ img.rangeManual {
   .SingleChart{
     padding: 1rem;
     max-width: 100%;
-    max-height: 300px;
+    max-height: 600px;
     height: auto;
+    
   }
 
   button {

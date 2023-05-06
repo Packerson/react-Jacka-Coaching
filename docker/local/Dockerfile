@@ -4,8 +4,9 @@ FROM node:${NODE_VERSION} as node
 
 FROM node as client-local-build
 
-WORKDIR /range-viewer-react
-ENV PATH=".../node_modules/.bin:$PATH"
-COPY . .
+WORKDIR /app
+ENV PATH="/app/node_modules/.bin:$PATH"
+COPY package.json package-lock.json ./
 RUN npm install
+COPY . .
 CMD ["npm", "start"]

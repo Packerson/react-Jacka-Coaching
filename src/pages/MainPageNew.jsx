@@ -16,7 +16,7 @@ import Image from '../components/Image';
 const MainPageNew = () => {
 
   // unpack state.image
-  const { images, isError, message, isLoading, isSuccess } = useSelector(
+  const { images, isError, message } = useSelector(
     (state) => state.images
   )
   const {user} = useSelector((state)=>state.auth)

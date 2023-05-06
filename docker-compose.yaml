@@ -6,10 +6,9 @@ services:
       context: .
       dockerfile: ./docker/local/Dockerfile
     restart: on-failure
-    volumes:
-      - /react_app
     ports:
       - 3000:3000
-    image: react_app:react
+    image: packerson/range_viewer_react
     container_name: react_container
+    working_dir: /app
     command: npm start
