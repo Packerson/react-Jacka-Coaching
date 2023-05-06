@@ -13,7 +13,7 @@ import Image from '../components/Image';
 // display buttons and images, 
 // Get value from buttons and insert user info to pushedBtn
 // clicking on the button sends a query to the backend
-const MainPage = () => {
+const MainPageNew = () => {
 
   // unpack state.image
   const { images, isError, message } = useSelector(
@@ -83,67 +83,68 @@ const MainPage = () => {
 if (user) {
   return (
     <>
-          <div className="ContainerBox">
-            <div className='RangeViewerStackSizes '>
-                {/* Function for render the Big Blinds buttons */}
-              {
-                BigBlindButtonsList.map((btn, idx)=> 
-                <BigBlindButtons btn={btn} idx={idx} pushedBtn={pushedBtn} setBB={setBB}  />
-               )
-              }
-            </div>
-          
-
-                {/* Render PreFlopActionbuttons */}
-          <div className="RangeViewerComponentPreflopAction  ">
-            <div className="RangeViewerComponentPreflopActionAction">
-              <button className={`${pushedBtn[1] === "RFI" ? "btnActiv" : "btnUnActiv"}`} onClick={setRFIor3B}> RFI </button>
-              <button className={`${pushedBtn[1] === "3bet" ? "btnActiv" : "btnUnActiv"}`} onClick={setRFIor3B}> 3bet </button>
-            </div>
-
-
-                {/* Function for render PreFlopAction1 */}
-            <div className="RangeViewerComponentPreflopActionPlayer ">
-              {
-                RangeViewerComponentPreflopActionPlayer1.map((btn, idx)=> 
-                  <PreFlopActionButtons1 btn={btn} idx={idx} pushedBtn={pushedBtn} preFlopActionPlayer1={preFlopActionPlayer1} />
-                 )
-              }
-            </div>
-
-
-                  {/* Function for render PreFlopAction2 */}
-            <div className="RangeViewerComponentPreflopActionPlayer ">
-              {
-                RangeViewerComponentPreflopActionPlayer1.map((btn, idx)=> 
-                  <PreFlopActionButtons2 btn={btn} idx={idx} pushedBtn={pushedBtn} preFlopActionPlayer2={preFlopActionPlayer2}/>
-                 )
-              }
-            </div>
-          </div>
-
-
-
-          {/* display images , if images.images_url display charts else display message*/}      
-          {images.images_url ?
-            (
-              <div className="RangeViewerComponentRanges ">
-
-                {/* compoment to display charts */}
-                { 
-                images.images_url.map((image)=>
-                  <Image image={image}/>)
+          <div className="ContainerBoxNew">
+            <div className='AllButtons'>
+              <div className='StackSize'>
+                  {/* Function for render the Big Blinds buttons */}
+                {
+                  BigBlindButtonsList.map((btn, idx)=> 
+                  <BigBlindButtons btn={btn} idx={idx} pushedBtn={pushedBtn} setBB={setBB}  />
+                )
                 }
               </div>
+            
+
+                  {/* Render PreFlopActionbuttons */}
+              <div className=" Rfi3Bet ">
               
-            ):
-            <h2 style={{color:"white"}}>Charts not found</h2>
-          }
-          </div>
+                <button className={`${pushedBtn[1] === "RFI" ? "btnActiv" : "btnUnActiv"}`} onClick={setRFIor3B}> RFI </button>
+                <button className={`${pushedBtn[1] === "3bet" ? "btnActiv" : "btnUnActiv"}`} onClick={setRFIor3B}> 3bet </button>
+              </div>
+
+
+                  {/* Function for render PreFlopAction1 */}
+              <div className=" ActionPreFlop">
+                {
+                  RangeViewerComponentPreflopActionPlayer1.map((btn, idx)=> 
+                    <PreFlopActionButtons1 btn={btn} idx={idx} pushedBtn={pushedBtn} preFlopActionPlayer1={preFlopActionPlayer1} />
+                  )
+                }
+              </div>
+
+
+                    {/* Function for render PreFlopAction2 */}
+              <div className="ActionPreFlop ">
+                {
+                  RangeViewerComponentPreflopActionPlayer1.map((btn, idx)=> 
+                    <PreFlopActionButtons2 btn={btn} idx={idx} pushedBtn={pushedBtn} preFlopActionPlayer2={preFlopActionPlayer2}/>
+                  )
+                }
+              </div>
+            </div>
+
+
+
+            {/* display images , if images.images_url display charts else display message*/}      
+            {images.images_url ?
+              (
+                <div className=" Charts">
+
+                  {/* compoment to display charts */}
+                  { 
+                  images.images_url.map((image)=>
+                    <Image image={image}/>)
+                  }
+                </div>
+                
+              ):
+              <h2 style={{color:"white"}}>Charts not found</h2>
+            }
+            </div>
       
     </>
   );
             };
 };
 
-export default MainPage;
+export default MainPageNew;

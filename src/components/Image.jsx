@@ -1,15 +1,20 @@
 import React from 'react'
 
-const Image = ({images}) => {
-  console.log(images)
+
+// compoment display charts
+const Image = ({image}) => {
   return (
-    <div>
-    <div className='titleRange'> Chart 1</div>
-    <div className="RangeViewerComponentRangesRange">
-      <img src={images.image_url_1} alt="Logo1" className="rangeManual"/>
-    </div>
-  </div>
+    <img src={image} alt="Logo1" className="SingleChart"/>
   )
 }
 
 export default Image
+
+{/* <div className="RangeViewerComponentRangesRange">
+
+{/* frament for google drive api */}
+{/* <img src={`data:image/jpeg;base64,${image.file}`} alt="Logo1" className="rangeManual"/> */}
+
+
+
+// </div> */}

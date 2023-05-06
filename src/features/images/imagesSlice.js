@@ -46,6 +46,13 @@ export const imageSlice = createSlice({
                 state.isLoading = false;
                 state.isSuccess = true;
                 state.images = action.payload
+                // fragment for google drive api 
+                // if (action.payload.message){
+                //     state.images = action.payload
+                // } else {
+                // state.images = action.payload.files
+                // console.log(action.payload.files)
+                // }
             })
             .addCase(getImage.rejected, (state, action)=>{
                 state.isError = true;

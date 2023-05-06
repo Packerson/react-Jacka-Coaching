@@ -1,3 +1,8 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 /* Footer and Header css */
 .NCBox {
   background-color: #000;
@@ -34,13 +39,7 @@
   font-size: 1.125rem;
 }
 
-.FooterBox {
-  background-color: #000;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 100px;
-}
+
 
 /* Background */
 .LandingPage {
@@ -127,25 +126,6 @@ div.text-center {
   background-color: rgb(75, 196, 237);
 }
 
-/* .ContainerBox {
-  background-image: url("images/background.jpg") ;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100vh;
-  width: auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  text-align: center;
-  max-width: 100%;
-  max-height: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  flex-wrap: wrap;
-  overflow: auto;
-} */
 .ContainerBox {
   background-image: url("images/background.jpg") ;
   background-position: center;
@@ -167,14 +147,13 @@ div.text-center {
 }
 
 
-
-.RangeViewerComponentbox{
+.RangeViewerStackSizes {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 1rem;
 }
 
 .RangeViewerComponentPreflopAction {
@@ -183,14 +162,14 @@ div.text-center {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 1rem;
 }
 .RangeViewerComponentPreflopActionAction, .RangeViewerComponentPreflopActionPlayer {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  margin-left: 3px;
-  margin-right: 3px;
+  margin-left: 1px;
+  margin-right: 1px;
 }
 
 .RangeViewerComponentRanges {
@@ -199,13 +178,13 @@ div.text-center {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 1rem;
 }
 
 
 .rangeManual {
   width: auto;
-  height: auto;
+  height: 50%;
 }
 
 .titleRange {
@@ -221,23 +200,41 @@ div.text-center {
 
 }
 
-@media (min-width: 600px) {
-  .RangeViewerComponentRangesRange,
-  .relative {
-    max-width: 60%;
-  }
+/* FOOTER */
+.Footer {
+  position: fixed;
+  bottom: 0;
 }
-@media (min-width: 700px) {
-  .RangeViewerComponentRangesRange,
-  .relative {
-    max-width: 75%;
+
+/* Styles for phones */
+@media only screen and (max-width: 1000px) {
+  Footer {
+    display: none;
   }
 }
 
-@media (min-width: 820px) {
+
+
+@media (max-width: 600px) {
+  .RangeViewerComponentRangesRange,
+  .relative {
+    max-width: 60%;
+    
+  }
+}
+@media (max-width: 700px) {
+  .RangeViewerComponentRangesRange,
+  .relative {
+    max-width: 75%;
+
+  }
+}
+
+@media (max-width: 820px) {
   .RangeViewerComponentRangesRange,
   .relative {
     max-width: 80%;
+
   }
 }
 @media (min-width: 900px) {
@@ -247,20 +244,20 @@ div.text-center {
   }
 }
 
-@media (min-height: 600px) {
-  .RangeViewerComponentRangesRange,
-  .relative {
-    max-width: 60%;
-  }
-}
-@media (min-height: 700px) {
+@media (max-height: 600px) {
   .RangeViewerComponentRangesRange,
   .relative {
     max-width: 70%;
   }
 }
+@media (max-height: 700px) {
+  .RangeViewerComponentRangesRange,
+  .relative {
+    max-width: 75%;
+  }
+}
 
-@media (min-height: 820px) {
+@media (max-height: 820px) {
   .RangeViewerComponentRangesRange,
   .relative {
     max-width: 85%;
@@ -291,3 +288,74 @@ img.rangeManual {
     max-width: 80%;
   }
 }
+
+
+
+/* MainPageNew */
+
+.ContainerBoxNew {
+  background-image: url("images/background.jpg") ;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: auto;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.AllButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+  .StackSize {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .Rfi3Bet {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .ActionPreFlop{
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+  }
+
+  .Charts{
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .SingleChart{
+    padding: 1rem;
+    max-width: 100%;
+    max-height: 600px;
+    height: auto;
+    
+  }
+
+  button {
+    border: 1px solid black;
+    border-radius: 5px;
+    font-family: "Arial", sans-serif;
+    
+  }
