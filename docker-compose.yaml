@@ -10,5 +10,4 @@ services:
       - 3000:3000
     image: packerson/range_viewer_react
     container_name: react_container
-    working_dir: /app
     command: npm start

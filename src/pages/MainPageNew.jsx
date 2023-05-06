@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from "react-toastify";
 import { useNavigate} from 'react-router-dom'
 
+
+import { login, } from "../features/auth/authSlice";
 import { getImage } from '../features/images/imagesSlice';
 import PreFlopActionButtons1 from '../components/PreFlopActionButtons1'
 import PreFlopActionButtons2 from '../components/PreFlopActionButtons2'
@@ -29,30 +31,26 @@ const MainPageNew = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  
 
   useEffect(() => {
-    // if error set message and display it
-    if (isError) {
-      toast.error(message);
-    }
-    // if no user redirect to loginPage
+    const user = JSON.parse(localStorage.getItem('user'));
     if (!user) {
       return navigate("/login/");
     }
+    // getUser(user.email)
+    //   .then(response => {
+    //     if (response.data !== user) {
+    //       localStorage.setItem('user', JSON.stringify(response.data));
+    //       dispatch(login(response.data));
+    //     }
+    //   })
+    //   .catch(error => {
+    //     toast.error(error.message);
+    //   });
+  }, []);
 
-    // if user and buttons are not on init state dispatch getImage action and send data
-    //  with value from buttons and user info
-    if (user) {
-      console.log(user.subscriber)
-      // get images
-      dispatch(getImage(pushedBtn));
-    }
-    
-    // listing on change 
-    }, [pushedBtn, user]);
 
-    
+  
 
   // list with buttons names to render components
   const BigBlindButtonsList = ['100BB', '60BB', '40BB', '30BB', "20BB"]
@@ -61,21 +59,25 @@ const MainPageNew = () => {
   // get value and change class in list[0]
   const setBB = (e) => {
     setPushedBtn([e.target.innerText, pushedBtn[1], pushedBtn[2], pushedBtn[3], user.subscriber])
+    dispatch(getImage(pushedBtn))
   }
   
   // get value and change class in list[1]
   const setRFIor3B = (e) => {
     setPushedBtn([pushedBtn[0],e.target.innerText, pushedBtn[2], pushedBtn[3], user.subscriber])
+    dispatch(getImage(pushedBtn))
   }
 
   // get value and change class in list[2]
   const preFlopActionPlayer1 = (e) => {
     setPushedBtn([pushedBtn[0], pushedBtn[1], e.target.innerText, pushedBtn[3], user.subscriber])
+    dispatch(getImage(pushedBtn))
   }
 
   // get value and change class in list[3]
   const preFlopActionPlayer2 = (e) => {
     setPushedBtn([pushedBtn[0], pushedBtn[1], pushedBtn[2], e.target.innerText, user.subscriber])
+    dispatch(getImage(pushedBtn))
   }
 
 

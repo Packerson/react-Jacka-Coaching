@@ -217,7 +217,8 @@ div.text-center {
 
 @media (max-width: 600px) {
   .RangeViewerComponentRangesRange,
-  .relative {
+  .relative
+   {
     max-width: 60%;
     
   }
@@ -358,4 +359,15 @@ img.rangeManual {
     border-radius: 5px;
     font-family: "Arial", sans-serif;
     
+  }
+
+  @media screen and (orientation: landscape) {
+    /* ContainerBoxNew {
+      flex-wrap: nowrap;
+      flex-direction: row;
+    } */
+    SingleChart{
+      height: 200px;
+      width: 200px;
+    }
   }
