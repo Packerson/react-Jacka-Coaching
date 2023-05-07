@@ -19,29 +19,39 @@ const login = async (userData) => {
 	if (!response.data.INFO) {
 		const token = response.data.token;
 		localStorage.setItem("token", token);
-		localStorage.setItem("user", JSON.stringify(response.data));
-		return response.data;
-
-	}else {
-		return response.data
+		localStorage.setItem("user", JSON.stringify(response.data))
 	}
+	return response.data;	
 };
 
-// const getUser = () => {
-// 	// Get user information from localStorage
-// 	const user = JSON.parse(localStorage.getItem("user"));
-// 	if (user) {
-// 	  return user;
-// 	} else {
-// 	  return null;
-// 	}
-//   };
+const GET_USER_DATA = "http://localhost:8000/api/v1/image/getUser/";
+
+
+const getUser= async (userData) => {
+    // get token from localStorage, token is saved in authService login function
+    const token = localStorage.getItem("token");
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+        }
+    }
+    const response = await axios.post(GET_USER_DATA,userData,  config)
+    if (response.data) {
+        localStorage.setItem("user", JSON.stringify(response.data))
+    }
+    return response.data
+};
 
 // Logout user, remove user data
-const logout = () => localStorage.removeItem("user");
+const logout = () => {
+	localStorage.removeItem("image_url")
+	localStorage.removeItem("user");
+	localStorage.removeItem("token");
+}
 
 
-const authService = {login, logout}
+const authService = {login, logout, getUser}
 
 export default authService;
 
