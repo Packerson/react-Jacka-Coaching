@@ -3,6 +3,7 @@ import imageService from './imagesService';
 
 // init state
 const initialState = {
+    allCharts: {},
     images: {},
     isError: false,
     isLoading: false,
@@ -12,12 +13,34 @@ const initialState = {
 
 // Get image
 export const getImage = createAsyncThunk(
-    'images/getAll',
+    'images/getImage',
 
     // send data to backend
     async(dataFromBtn, thunkAPI) =>{
         try{
             return await imageService.getImage(dataFromBtn);
+
+        }catch (error){
+        const message =
+            (error.response && 
+                error.response.data && 
+                error.response.data.message) ||
+                error.message ||
+                error.toString();
+
+        return thunkAPI.rejectWithValue(message);        
+    }
+})
+
+
+// send GET to fetch all charts with buttons combinations
+export const getAllCharts = createAsyncThunk(
+    'images/getAllCharts',
+
+    // send data to backend
+    async(thunkAPI) =>{
+        try{
+            return await imageService.getAllCharts();
 
         }catch (error){
         const message =
@@ -55,6 +78,21 @@ export const imageSlice = createSlice({
                 // }
             })
             .addCase(getImage.rejected, (state, action)=>{
+                state.isError = true;
+                state.isLoading = false;
+                state.message = action.payload;
+            })
+
+            // get all charts
+            .addCase(getAllCharts.pending, (state)=>{
+                state.isLoading = true;
+            })
+            .addCase(getAllCharts.fulfilled, (state, action)=>{
+                state.isLoading = false;
+                state.isSuccess = true;
+                state.allCharts = action.payload
+            })
+            .addCase(getAllCharts.rejected, (state, action)=>{
                 state.isError = true;
                 state.isLoading = false;
                 state.message = action.payload;
