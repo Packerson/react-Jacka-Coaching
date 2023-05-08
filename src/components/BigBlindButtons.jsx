@@ -1,11 +1,22 @@
-import React from 'react'
+import React from "react";
 
+const BigBlindButtons = ({
+   btn,
+   pushedBtn,
+   bigBlindActivButtons,
+   setBB,
+   idx,
+}) => {
+   return (
+      <button
+         disabled={!bigBlindActivButtons.includes(btn)}
+         className={`${pushedBtn[0] === btn ? "btnActiv" : " btnUnActiv"}`}
+         key={idx}
+         onClick={setBB}
+      >
+         {btn}
+      </button>
+   );
+};
 
-const BigBlindButtons = ({btn, pushedBtn, setBB, idx} ) => {
-
-  return (
-    <button className={`${pushedBtn[0] === btn ? "btnActiv" : " btnUnActiv"}`} key={idx} onClick={setBB} >{btn}</button>
-  )
-}
-
-export default BigBlindButtons
+export default BigBlindButtons;

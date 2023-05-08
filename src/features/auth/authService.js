@@ -48,6 +48,7 @@ const logout = () => {
 	localStorage.removeItem("image_url")
 	localStorage.removeItem("user");
 	localStorage.removeItem("token");
+	localStorage.removeItem("GET_ALL_CHARTS");
 }
 
 

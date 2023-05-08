@@ -45,7 +45,6 @@ const getAllCharts = async () => {
 };
 
 
-
 const imageService = {getImage, getAllCharts};
 
 export default imageService;
