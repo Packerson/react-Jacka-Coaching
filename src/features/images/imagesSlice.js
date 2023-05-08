@@ -32,6 +32,10 @@ export const getImage = createAsyncThunk(
     }
 })
 
+// reset GetImage, 
+export const resetImage = createAsyncThunk("images/resetImage", async () => {
+	imageService.resetImage();
+});
 
 // send GET to fetch all charts with buttons combinations
 export const getAllCharts = createAsyncThunk(
@@ -96,6 +100,10 @@ export const imageSlice = createSlice({
                 state.isError = true;
                 state.isLoading = false;
                 state.message = action.payload;
+            })
+
+            .addCase(resetImage.fulfilled, (state)=>{
+                state.images = {};
             })
     }
 });
