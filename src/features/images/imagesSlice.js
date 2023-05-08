@@ -3,7 +3,7 @@ import imageService from './imagesService';
 
 // init state
 const initialState = {
-    allCharts: {},
+    allCharts: [],
     images: {},
     isError: false,
     isLoading: false,

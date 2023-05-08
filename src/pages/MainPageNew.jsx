@@ -5,8 +5,9 @@ import { useNavigate } from "react-router-dom";
 
 import { login, getUser } from "../features/auth/authSlice";
 import { getImage, getAllCharts } from "../features/images/imagesSlice";
-import PreFlopActionButtons1 from "../components/PreFlopActionButtons1";
-import PreFlopActionButtons2 from "../components/PreFlopActionButtons2";
+import Player1PostitionButtons from "../components/Player1PostitionButtons";
+import ActionsPreFlop from "../components/ActionsPreFlop";
+import Player2PostitionButtons from "../components/Player2PostitionButtons";
 import BigBlindButtons from "../components/BigBlindButtons";
 import Image from "../components/Image";
 
@@ -15,12 +16,27 @@ import Image from "../components/Image";
 // clicking on the button sends a query to the backend
 const MainPageNew = () => {
    // unpack state.image
-   const { images, isError, message } = useSelector((state) => state.images);
+   const { images, allCharts } = useSelector((state) => state.images);
    const { user } = useSelector((state) => state.auth);
 
    // get value from pushed button and change classname(when clicked change color on blue) in
    // activ button, init value for default charts
    const [pushedBtn, setPushedBtn] = useState([]);
+
+   const [bigBlindActivButtons, setBigBlindActivButtons] = useState([]);
+   const [bigBlindActivListButtons, setBigBlindActivListButtons] = useState([]);
+
+   const [riseActivButtons, setRiseActivButtons] = useState([]);
+   const [riseActivListButtons, setRiseActivListButtons] = useState([]);
+
+   const [player1PositionsActivButtons, setPlayer1PositionsActivButtons] =
+      useState([]);
+   const [player1PositionsListButtons, setPlayer1PositionsListButtons] =
+      useState([]);
+   const [player2PositionsActivButtons, setPlayer2PositionsActivButtons] =
+      useState([]);
+   const [player2PositionsListButtons, setPlayer2PositionsListButtons] =
+      useState([]);
 
    const dispatch = useDispatch();
    const navigate = useNavigate();
@@ -34,29 +50,38 @@ const MainPageNew = () => {
       dispatch(getAllCharts());
    }, []);
 
+   // set BigBlindActivButtons
+   useEffect(() => {
+      setBigBlindActivButtons(() => allCharts.map((arr) => arr[0]));
+   }, [allCharts]);
+
+   console.log("bigBlindActivButtons", bigBlindActivButtons);
+   console.log("bigBlindActivListButtons", bigBlindActivListButtons);
+   console.log("riseActivButtons", riseActivButtons);
+   console.log("riseActivListButtons", riseActivListButtons);
+   console.log("player1PositionsActivButtons", player1PositionsActivButtons);
+   console.log("player1PositionsListButtons", player1PositionsListButtons);
+   console.log("player2PositionsActivButtons", player2PositionsActivButtons);
+   console.log("player2PositionsListButtons", player2PositionsListButtons);
+
    // list with buttons names to render components
    const BigBlindButtonsList = ["100BB", "60BB", "40BB", "30BB", "20BB"];
-   const RangeViewerComponentPreflopActionPlayer1 = [
-      "UTG",
-      "MP",
-      "HJ",
-      "CO",
-      "BTN",
-      "SB",
-      "BB",
-   ];
+   const PlayerPostitionsList = ["UTG", "MP", "HJ", "CO", "BTN", "SB", "BB"];
+
+   const PlayersActions = ["RFI", "3bet"];
 
    // get value and change class in list[0]
    const setBB = (e) => {
-      const updatedPushedBtn = [
-         e.target.innerText,
-         pushedBtn[1],
-         pushedBtn[2],
-         pushedBtn[3],
-         user.subscriber,
-      ];
+      const updatedPushedBtn = [e.target.innerText];
+
+      const activBigBlindList = allCharts.filter(
+         (arr) => arr.find((btn) => btn === e.target.innerText) === arr[0]
+      );
       setPushedBtn(updatedPushedBtn);
-      dispatch(getImage(updatedPushedBtn));
+      setBigBlindActivListButtons(activBigBlindList);
+      setRiseActivButtons(() => activBigBlindList.map((arr) => arr[1]));
+      setPlayer1PositionsActivButtons([]);
+      setPlayer2PositionsActivButtons([]);
    };
 
    // get value and change class in list[1]
@@ -64,29 +89,46 @@ const MainPageNew = () => {
       const updatedPushedBtn = [
          pushedBtn[0],
          e.target.innerText,
-         pushedBtn[2],
-         pushedBtn[3],
          user.subscriber,
       ];
+
+      let activRiseList = [];
+      if (bigBlindActivListButtons.length > 1) {
+         activRiseList = bigBlindActivListButtons.filter(
+            (arr) => arr.find((btn) => btn === e.target.innerText) === arr[1]
+         );
+      } else {
+         activRiseList = bigBlindActivListButtons;
+      }
+
       setPushedBtn(updatedPushedBtn);
-      dispatch(getImage(updatedPushedBtn));
+      setRiseActivListButtons(activRiseList);
+      setPlayer1PositionsActivButtons(() => activRiseList.map((arr) => arr[2]));
+      setPlayer2PositionsActivButtons([]);
    };
 
    // get value and change class in list[2]
-   const preFlopActionPlayer1 = (e) => {
-      const updatedPushedBtn = [
-         pushedBtn[0],
-         pushedBtn[1],
-         e.target.innerText,
-         pushedBtn[3],
-         user.subscriber,
-      ];
+   const postitionPlayer1 = (e) => {
+      const updatedPushedBtn = [pushedBtn[0], pushedBtn[1], e.target.innerText];
+
+      let activPlayer1PositionList = [];
+      if (riseActivListButtons.length > 1) {
+         activPlayer1PositionList = riseActivListButtons.filter(
+            (arr) => arr.find((btn) => btn === e.target.innerText) === arr[2]
+         );
+      } else {
+         activPlayer1PositionList = riseActivListButtons;
+      }
+
       setPushedBtn(updatedPushedBtn);
-      dispatch(getImage(updatedPushedBtn));
+      setPlayer1PositionsListButtons(activPlayer1PositionList);
+      setPlayer2PositionsActivButtons(() =>
+         activPlayer1PositionList.map((arr) => arr[3])
+      );
    };
 
    // get value and change class in list[3]
-   const preFlopActionPlayer2 = (e) => {
+   const postitionPlayer2 = (e) => {
       const updatedPushedBtn = [
          pushedBtn[0],
          pushedBtn[1],
@@ -94,7 +136,17 @@ const MainPageNew = () => {
          e.target.innerText,
          user.subscriber,
       ];
+      let activPlayer2PositionList = [];
+      if (player1PositionsListButtons.length > 1) {
+         activPlayer2PositionList = player1PositionsListButtons.filter((arr) =>
+            arr.find((btn) => (btn === e.target.innerText) === arr[3])
+         );
+      } else {
+         activPlayer2PositionList = player1PositionsListButtons;
+      }
+
       setPushedBtn(updatedPushedBtn);
+      setPlayer2PositionsListButtons(activPlayer2PositionList);
       dispatch(getImage(updatedPushedBtn));
    };
 
@@ -102,10 +154,11 @@ const MainPageNew = () => {
       <>
          <div className="ContainerBoxNew">
             <div className="AllButtons">
+               {/* Function for render the Big Blinds buttons */}
                <div className="StackSize">
-                  {/* Function for render the Big Blinds buttons */}
                   {BigBlindButtonsList.map((btn, idx) => (
                      <BigBlindButtons
+                        bigBlindActivButtons={bigBlindActivButtons}
                         btn={btn}
                         idx={idx}
                         pushedBtn={pushedBtn}
@@ -116,46 +169,43 @@ const MainPageNew = () => {
 
                {/* Render PreFlopActionbuttons */}
                <div className=" Rfi3Bet ">
-                  <button
-                     className={`${
-                        pushedBtn[1] === "RFI" ? "btnActiv" : "btnUnActiv"
-                     }`}
-                     onClick={setRFIor3B}
-                  >
-                     {" "}
-                     RFI{" "}
-                  </button>
-                  <button
-                     className={`${
-                        pushedBtn[1] === "3bet" ? "btnActiv" : "btnUnActiv"
-                     }`}
-                     onClick={setRFIor3B}
-                  >
-                     {" "}
-                     3bet{" "}
-                  </button>
-               </div>
-
-               {/* Function for render PreFlopAction1 */}
-               <div className=" ActionPreFlop">
-                  {RangeViewerComponentPreflopActionPlayer1.map((btn, idx) => (
-                     <PreFlopActionButtons1
+                  {PlayersActions.map((btn, idx) => (
+                     <ActionsPreFlop
+                        riseActivButtons={riseActivButtons}
                         btn={btn}
                         idx={idx}
                         pushedBtn={pushedBtn}
-                        preFlopActionPlayer1={preFlopActionPlayer1}
+                        setRFIor3B={setRFIor3B}
                      />
                   ))}
                </div>
 
-               {/* Function for render PreFlopAction2 */}
-               <div className="ActionPreFlop ">
-                  {RangeViewerComponentPreflopActionPlayer1.map((btn, idx) => (
-                     <PreFlopActionButtons2
+               {/* Function for render player1 Postition */}
+               <div className=" ActionPreFlop">
+                  {PlayerPostitionsList.map((btn, idx) => (
+                     <Player1PostitionButtons
+                        player1PositionsActivButtons={
+                           player1PositionsActivButtons
+                        }
                         btn={btn}
                         idx={idx}
                         pushedBtn={pushedBtn}
-                        preFlopActionPlayer2={preFlopActionPlayer2}
+                        postitionPlayer1={postitionPlayer1}
+                     />
+                  ))}
+               </div>
+
+               {/* Function for render player2 postition */}
+               <div className="ActionPreFlop ">
+                  {PlayerPostitionsList.map((btn, idx) => (
+                     <Player2PostitionButtons
+                        player2PositionsActivButtons={
+                           player2PositionsActivButtons
+                        }
+                        btn={btn}
+                        idx={idx}
+                        pushedBtn={pushedBtn}
+                        postitionPlayer2={postitionPlayer2}
                      />
                   ))}
                </div>
