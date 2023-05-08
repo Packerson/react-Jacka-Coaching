@@ -16,7 +16,6 @@ const getImage = async (dataFromBtn) => {
             "Content-Type": "application/json",
         }
     }
-    console.log(dataFromBtn, "imageService")
     const response = await axios.post(GET_IMAGES_URL, dataFromBtn, config)
     if (response.data) {
         localStorage.setItem("image_url", JSON.stringify(response.data));
@@ -40,11 +39,11 @@ const getAllCharts = async () => {
     if (response.data) {
         localStorage.setItem("GET_ALL_CHARTS", JSON.stringify(response.data));
     }
-    console.log("getAllCharts", response.data )
     return response.data
 };
 
+const resetImage = () => localStorage.removeItem("image_url")
 
-const imageService = {getImage, getAllCharts};
+const imageService = {getImage, getAllCharts, resetImage};
 
 export default imageService;

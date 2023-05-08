@@ -198,6 +198,7 @@ div.text-center {
 .Footer {
   position: fixed;
   bottom: 0;
+  padding-top: 1rem;
 }
 
 /* Styles for phones */
@@ -333,7 +334,7 @@ img.rangeManual {
 }
 
 .Charts{
-  padding: 1rem;
+  
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -341,9 +342,10 @@ img.rangeManual {
 }
 
 .SingleChart{
-  padding: 1rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
   max-width: 100%;
-  max-height: 600px;
+  max-height: 450px;
   height: auto;
   
 }
