@@ -53,6 +53,13 @@ const MainPageNew = () => {
    const dispatch = useDispatch();
    const navigate = useNavigate();
 
+   // list with buttons names to render components
+   const BigBlindButtonsList = ["100BB", "60BB", "40BB", "30BB", "20BB"];
+   const PlayerPostitionsList = ["UTG", "MP", "HJ", "CO", "BTN", "SB", "BB"];
+   const PlayersActions = ["RFI", "3bet"];
+
+   // check if user is in localStore, if not navigate to login,
+   // each time user reload page, get user data, and base on that fetch allCharts depends of user.subsciprion
    useEffect(() => {
       const user = JSON.parse(localStorage.getItem("user"));
       if (!user) {
@@ -63,15 +70,36 @@ const MainPageNew = () => {
       });
    }, []);
 
-   // set BigBlindActivButtons
+   // set BigBlindActivButtons, stop map if new list === BigBlindButtonsList
    useEffect(() => {
-      setBigBlindActivButtons(() => allCharts.map((arr) => arr[0]));
-   }, [allCharts]);
+      let matchFound = false;
 
-   // list with buttons names to render components
-   const BigBlindButtonsList = ["100BB", "60BB", "40BB", "30BB", "20BB"];
-   const PlayerPostitionsList = ["UTG", "MP", "HJ", "CO", "BTN", "SB", "BB"];
-   const PlayersActions = ["RFI", "3bet"];
+      setBigBlindActivButtons((prevButtons) => {
+         const newButtons = allCharts
+            .map((arr) => arr[0])
+            .filter(
+               (button, index, array) =>
+                  !prevButtons.includes(button) &&
+                  !array.slice(0, index).includes(button)
+            );
+
+         // compare two list, if equal stop map
+         if (
+            JSON.stringify(prevButtons.concat(newButtons).sort()) ===
+            JSON.stringify(BigBlindButtonsList.sort())
+         ) {
+            matchFound = true;
+         }
+
+         const updatedButtons = prevButtons.concat(newButtons);
+
+         if (matchFound) {
+            return updatedButtons;
+         }
+
+         return updatedButtons;
+      });
+   }, [allCharts]);
 
    // get value and change class in list[0]
    const setBB = (e) => {
@@ -126,7 +154,7 @@ const MainPageNew = () => {
          activPlayer1PositionList.map((arr) => arr[3])
       );
    };
-
+   console.log("player2PositionsListButtons", player2PositionsListButtons);
    // get value and change class in list[3]
    const postitionPlayer2 = (e) => {
       const updatedPushedBtn = [
@@ -138,21 +166,16 @@ const MainPageNew = () => {
       ];
       let activPlayer2PositionList = [];
       if (player1PositionsListButtons.length > 1) {
-         activPlayer2PositionList = player1PositionsListButtons.filter((arr) =>
-            arr.find((btn) => (btn === e.target.innerText) === arr[3])
+         activPlayer2PositionList = player1PositionsListButtons.filter(
+            (arr) => arr.find((btn) => btn === e.target.innerText) === arr[3]
          );
       } else {
          activPlayer2PositionList = player1PositionsListButtons;
       }
-
+      console.log("activPlayer2PositionList", activPlayer2PositionList);
       setPushedBtn(updatedPushedBtn);
       setPlayer2PositionsListButtons(...activPlayer2PositionList);
       dispatch(getImage(updatedPushedBtn));
-      console.log("activPlayer2PositionList", activPlayer2PositionList);
-      console.log(
-         "player2PositionsListButtons",
-         player2PositionsListButtons.slice(4, 6)
-      );
    };
 
    if (user) {
@@ -218,14 +241,13 @@ const MainPageNew = () => {
                </div>
 
                {/* display images , if images.images_url display charts else display message*/}
-               {images.images_url ? (
-                  //  {[...player2PositionsListButtons.slice(4, 6)] ? (
-
+               {/* {images.images_url ? ( */}
+               {[...player2PositionsListButtons.slice(4, 6)] ? (
                   <div className=" Charts">
                      {message}
                      {/* compoment to display charts */}
-                     {images.images_url.map((image) => (
-                        // {player2PositionsListButtons.slice(4, 6).map((image) => (
+                     {/* {images.images_url.map((image) => ( */}
+                     {player2PositionsListButtons.slice(4, 6).map((image) => (
                         <Image image={image} />
                      ))}
                   </div>
@@ -236,6 +258,7 @@ const MainPageNew = () => {
          </>
       );
    }
+   return <h1>Please, Log IN!</h1>;
 };
 
 export default MainPageNew;
