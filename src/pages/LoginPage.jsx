@@ -37,7 +37,7 @@ const LoginPage= () =>{
         }
 
 		// listening on change one of these elements 
-    	},[isError, isSuccess, user, message]);
+    	},[isError, isSuccess, user, message, navigate]);
 
 
 	// submit function if everthing ok dispatch login action
