@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 import LoginPage from "./pages/LoginPage"
 import Header from './components/Header'
-import MainPage from "./pages/MainPage"
 import Footer from './components/Footer';
 import PrivateRoutes from './components/PrivateRoutes';
 
@@ -17,7 +16,6 @@ const App = () => {
       <Routes>
         {/* private routes check if user is authenticate */}
         <Route element={<PrivateRoutes/>}>
-          {/* <Route path="/" element={<MainPage/>} /> */}
           <Route path="/" element={<MainPageNew/>} />
         </Route>
         <Route path="login/" element={<LoginPage/>} />

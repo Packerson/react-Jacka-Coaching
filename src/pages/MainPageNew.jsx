@@ -68,6 +68,7 @@ const MainPageNew = () => {
       dispatch(getUser()).then(() => {
          dispatch(getAllCharts(user));
       });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
 
    // set BigBlindActivButtons, stop map if new list === BigBlindButtonsList
@@ -99,6 +100,7 @@ const MainPageNew = () => {
 
          return updatedButtons;
       });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [allCharts]);
 
    // get value and change class in list[0]
@@ -178,7 +180,9 @@ const MainPageNew = () => {
       dispatch(getImage(updatedPushedBtn));
    };
 
-   if (user) {
+   if (!user) {
+      return navigate("/login/");
+   } else {
       return (
          <>
             <div className="ContainerBoxNew">
@@ -258,7 +262,6 @@ const MainPageNew = () => {
          </>
       );
    }
-   return <h1>Please, Log IN!</h1>;
 };
 
 export default MainPageNew;

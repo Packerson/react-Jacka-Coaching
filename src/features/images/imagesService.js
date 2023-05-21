@@ -1,8 +1,8 @@
 import axios from "axios";
 
 // links to backend 
-const GET_IMAGES_URL = "http://localhost:8000/api/v1/image/";
-const GET_ALL_CHARTS = "http://localhost:8000/api/v1/image/getCharts/";
+const GET_IMAGES_URL = "https://www.api.dsgaff.com//api/v1/image/";;
+const GET_ALL_CHARTS = "https://www.api.dsgaff.com/api/v1/image/getCharts/";
 
 // send POST with data from buttons and user info
 // if ok Get link to images

@@ -10,11 +10,7 @@ const Image = ({image}) => {
 
 export default Image
 
-{/* <div className="RangeViewerComponentRangesRange">
-
-{/* frament for google drive api */}
-{/* <img src={`data:image/jpeg;base64,${image.file}`} alt="Logo1" className="rangeManual"/> */}
-
-
-
-// </div> */}
+//  <div className="RangeViewerComponentRangesRange">
+//  frament for google drive api 
+//  <img src={`data:image/jpeg;base64,${image.file}`} alt="Logo1" className="rangeManual"/> 
+// </div> 
