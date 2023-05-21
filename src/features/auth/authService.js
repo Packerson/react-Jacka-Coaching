@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // link to backend to check user email
-const CHECK_EMAIL_URL = "https://www.api.dsgaff.com//api/v1/check/check/";
+const CHECK_EMAIL_URL = "https://www.api.dsgaff.com/api/v1/check/check/";
 
 
 // Check email, send enquiers to 
