@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // link to backend to check user email
-const CHECK_EMAIL_URL = "http://localhost:8000/api/v1/check/check/";
+const CHECK_EMAIL_URL = "https://www.api.dsgaff.com//api/v1/check/check/";
 
 
 // Check email, send enquiers to 
@@ -24,7 +24,7 @@ const login = async (userData) => {
 	return response.data;	
 };
 
-const GET_USER_DATA = "http://localhost:8000/api/v1/image/getUser/";
+const GET_USER_DATA = "https://www.api.dsgaff.com/api/v1/image/getUser/";
 
 
 const getUser= async (userData) => {
