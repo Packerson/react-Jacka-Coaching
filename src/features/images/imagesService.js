@@ -34,9 +34,9 @@ const getAllCharts = async () => {
         }
     }
     const response = await axios.get(GET_ALL_CHARTS, config)
-    // if (response.data) {
-    //     localStorage.setItem("GET_ALL_CHARTS", JSON.stringify(response.data));
-    // }
+    if (response.data) {
+        localStorage.setItem("GET_ALL_CHARTS", JSON.stringify(response.data));
+    }
     return response.data
 };
 
