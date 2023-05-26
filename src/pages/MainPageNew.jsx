@@ -14,9 +14,19 @@ import Player2PostitionButtons from "../components/Player2PostitionButtons";
 import BigBlindButtons from "../components/BigBlindButtons";
 import Image from "../components/Image";
 
-// display buttons and images,
-// Get value from buttons and insert user info to pushedBtn
-// clicking on the button sends a query to the backend
+/**
+ * The MainPageNew component is responsible for displaying buttons and images.
+ * It retrieves values from the buttons and inserts user info into pushedBtn.
+ * 
+ * to possibilty :
+ * a) (I am using this option) when user is log in fetch all buttons combinations with links to charts , and filter 
+ * them by clicking on the buttons. When last button id clicekd == display charts
+ * 
+ * b) when user is log in fetch all buttons combinations with out links to charts, 
+ * and filter them by clicking on the buttons. Last button clicekd display send 
+ * query to backend to get links to charts charts
+ * Clicking on a button sends a query to the backend.
+ */
 const MainPageNew = () => {
    // unpack state.image
    const { images, allCharts, message } = useSelector((state) => state.images);
@@ -100,6 +110,7 @@ const MainPageNew = () => {
 
          return updatedButtons;
       });
+      // line under deactivate warning message about array of dependencies
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [allCharts]);
 
@@ -156,7 +167,7 @@ const MainPageNew = () => {
          activPlayer1PositionList.map((arr) => arr[3])
       );
    };
-   console.log("player2PositionsListButtons", player2PositionsListButtons);
+
    // get value and change class in list[3]
    const postitionPlayer2 = (e) => {
       const updatedPushedBtn = [
@@ -174,10 +185,10 @@ const MainPageNew = () => {
       } else {
          activPlayer2PositionList = player1PositionsListButtons;
       }
-      console.log("activPlayer2PositionList", activPlayer2PositionList);
+
       setPushedBtn(updatedPushedBtn);
       setPlayer2PositionsListButtons(...activPlayer2PositionList);
-      dispatch(getImage(updatedPushedBtn));
+      // dispatch(getImage(updatedPushedBtn));
    };
 
    if (!user) {

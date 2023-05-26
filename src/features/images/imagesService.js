@@ -1,8 +1,6 @@
 import axios from "axios";
-
-// links to backend 
-const GET_IMAGES_URL = "https://www.api.dsgaff.com//api/v1/image/";;
-const GET_ALL_CHARTS = "https://www.api.dsgaff.com/api/v1/image/getCharts/";
+// import links to backend
+import {GET_IMAGES_URL, GET_ALL_CHARTS } from "../../links"
 
 // send POST with data from buttons and user info
 // if ok Get link to images
@@ -17,9 +15,9 @@ const getImage = async (dataFromBtn) => {
         }
     }
     const response = await axios.post(GET_IMAGES_URL, dataFromBtn, config)
-    if (response.data) {
-        localStorage.setItem("image_url", JSON.stringify(response.data));
-    }
+    // if (response.data) {
+    //     localStorage.setItem("image_url", JSON.stringify(response.data));
+    // }
     return response.data
 };
 

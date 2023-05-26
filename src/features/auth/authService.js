@@ -1,7 +1,6 @@
 import axios from "axios";
-
-// link to backend to check user email
-const CHECK_EMAIL_URL = "https://www.api.dsgaff.com/api/v1/check/check/";
+// import links to backend
+import {CHECK_EMAIL_URL, GET_USER_DATA } from "../../links"
 
 
 // Check email, send enquiers to 
@@ -23,9 +22,6 @@ const login = async (userData) => {
 	}
 	return response.data;	
 };
-
-const GET_USER_DATA = "https://www.api.dsgaff.com/api/v1/image/getUser/";
-
 
 const getUser= async (userData) => {
     // get token from localStorage, token is saved in authService login function

@@ -29,10 +29,10 @@ const Footer = () => {
                 </Col>
 
                 <Col className="d-flex justify-content-end mr-0">
-                    <a className="p-1" href="https://www.facebook.com">Facebook</a>
-                    <a className="p-1" href="https://www.Twitter.com">Twitter</a>
-                    <a className="p-1" href="https://www.Instagram.com">Instagram</a>
-                    <a className="p-1" href="https://www.Youtube.com">Youtube</a> 
+                    <a className="p-1" href="https://www.facebook.com/farazjaka">Facebook</a>
+                    <a className="p-1" href="https://twitter.com/farazjaka">Twitter</a>
+                    <a className="p-1" href="https://www.instagram.com/farazjaka/">Instagram</a>
+                    <a className="p-1" href="https://www.youtube.com/farazjakapoker">Youtube</a> 
                 </Col>
             </Row>
         </Container>
