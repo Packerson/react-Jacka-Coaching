@@ -1,16 +1,15 @@
-Frontend app "Range Viewer" for Jaka Coaching.
+# Frontend app "Range Viewer" for Jaka Coaching.
 App displays poker charts depends of user subscribe status.
 
 
-App is connected with backend Django Rest Framework and database everthing is deployed on DigitalOcean Cloud. 
+App in JavaScript/React is connected with backend Django Rest Framework and database,  everthing is deployed on DigitalOcean Cloud. 
 
 
-Two pages:
-
+## Two pages:
     - login
     - mainPage
 
-Login Page:
+### Login Page:
     User need to input email. Next step- app is send querie to backend and check if user exists in database-production:
         - if yes check user subsribtion and redirect to MainPage
         - if no:
@@ -20,7 +19,7 @@ Login Page:
 
         save user and token data in localstorage
 
-MainPage:
+### MainPage:
 
     When page is reloded update user data
     Fetch all poker Charts with buttons combinations depends of user subscription to display them from database-production.
@@ -30,7 +29,7 @@ MainPage:
     Each buttons set is seperatly component. 
 
 
-Redux reducers:
+## Redux reducers:
 
     - auth - fetch authentication data from backend
     - images - fetch buttons combination with links to charts
