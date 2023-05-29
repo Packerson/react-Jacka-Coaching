@@ -1,48 +1,42 @@
-# React App for Range views.
+# Frontend app "Range Viewer" for Jaka Coaching.
+App displays poker charts depends of user subscribe status.
 
-## Endpoints: 
-  - /  
-  - /login  
-  
- ### In Login page, 
-  Input email. Request is sent to the backend,to check the user in the database or check him on uscreen. If uesr on uscreen, create new user in database<br>
-  Possible answers:
- - users with details info (subscriber boolean)
- - or message to create account on JackaCochaing
+
+App in JavaScript/React is connected with backend Django Rest Framework and database,  everthing is deployed on DigitalOcean Cloud. 
+
+
+## Two pages:
+    - login
+    - mainPage
+
+### Login Page:
+    User need to input email. Next step- app is send querie to backend and check if user exists in database-production:
+        - if yes check user subsribtion and redirect to MainPage
+        - if no:
+            - check if user exists in publisher database(connected with JakaCoaching)
+                - yes, create user in production database with data from database JakaCoaching and redirect to MainPage
+                - no, display message "Create account on JakaCoaching"
+
+        save user and token data in localstorage
+
+### MainPage:
+
+    When page is reloded update user data
+    Fetch all poker Charts with buttons combinations depends of user subscription to display them from database-production.
+
+    Each pushed button reduce list of allowed combination. 
+
+    Each buttons set is seperatly component. 
+
+
+## Redux reducers:
+
+    - auth - fetch authentication data from backend
+    - images - fetch buttons combination with links to charts
+
  
- ### / MainPage 
-After login, a request with default values is sent to the backend, receiving default charts with subscriber=false. 
-Every click on the button sends a new request to the backend, then the backend checks if the button combinations exist in the database. <br>
-Default query:
-````
-  ["30BB","3bet","HJ","MP", false]
-  ````
+Link.js 
+    - Links to backend, change comment if want to use this up localy
 
-  Possible answers:
-  - two links to images 
-  - or info no charts in DB
-  
- ## Redux , Store
-  
- ### Init State:
- - Auth 
- ```
- const initialState = {
-	user: user ? user : null,
-	isError: false,
-	isLoading: false,
-	isSuccess: false,
-	message: "",
-};
-```
-- Images
-```
-const initialState = {
-    images: {},
-    isError: false,
-    isLoading: false,
-    isSuccess:false,
-    message: '',
-}
 
-```
+
