@@ -64,7 +64,7 @@ const MainPageNew = () => {
    const navigate = useNavigate();
 
    // list with buttons names to render components
-   const BigBlindButtonsList = ["100BB", "60BB", "40BB", "30BB", "20BB"];
+   const BigBlindButtonsList = ["300BB", "200BB", "100BB", "75BB", "50BB", "40BB", "30BB", "20BB", "15BB", "10BB"];
    const PlayerPostitionsList = ["UTG", "MP", "HJ", "CO", "BTN", "SB", "BB"];
    const PlayersActions = ["RFI", "3bet"];
 
@@ -81,10 +81,12 @@ const MainPageNew = () => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
 
+   
    // set BigBlindActivButtons, stop map if new list === BigBlindButtonsList
    useEffect(() => {
       let matchFound = false;
 
+      // setbigBlindActivButtons list of available button to click by user
       setBigBlindActivButtons((prevButtons) => {
          const newButtons = allCharts
             .map((arr) => arr[0])
