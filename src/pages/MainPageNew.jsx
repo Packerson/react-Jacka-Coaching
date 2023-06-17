@@ -65,7 +65,7 @@ const MainPageNew = () => {
 
    // list with buttons names to render components
    const BigBlindButtonsList = ["300BB", "200BB", "100BB", "75BB", "50BB", "40BB", "30BB", "20BB", "15BB", "10BB"];
-   const PlayerPostitionsList = ["UTG", "MP", "HJ", "CO", "BTN", "SB", "BB"];
+   const PlayerPostitionsList = ["UTG", "UTG+1", "MP", "HJ", "CO", "BTN", "SB", "BB"];
    const PlayersActions = ["RFI", "3bet"];
 
    // check if user is in localStore, if not navigate to login,
