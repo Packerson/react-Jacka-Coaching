@@ -266,9 +266,9 @@ div.text-center {
 .SingleChart{
   margin-top: 1rem;
   margin-left: 1rem;
-  width: 900px;
-  height: auto;
-  object-fit: contain; /*Optional: Dopasowanie obrazu wewnątrz kontenera */
+  width: 800px;
+  height: 450px;
+  /* object-fit: contain; Optional: Dopasowanie obrazu wewnątrz kontenera */
   image-rendering: -webkit-optimize-contrast; /*Optional: Poprawa ostrości obrazu w Chrome i nie tylko*/
 }
 
